@@ -2,7 +2,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { ThemeProvider } from "styled-components";
 import type { AppProps } from "next/app";
 import "normalize.css";
-import { theme } from "./theme/theme";
+import { theme } from "../theme/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const client = new ApolloClient({
