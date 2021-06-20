@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Link from "next/link";
 
 export const Header = styled.header`
@@ -18,7 +18,11 @@ export const List = styled.ul`
   list-style: none;
 `;
 
-export const Item = styled.li`
+interface ItemProps {
+  linkActive?: boolean;
+}
+
+export const Item = styled.li<ItemProps>`
   margin: 0 1rem;
 
   > * {
@@ -26,6 +30,14 @@ export const Item = styled.li`
     text-decoration: none;
     font-weight: 800;
   }
+
+  ${({ linkActive }) =>
+    linkActive &&
+    css`
+      > * {
+        color: ${({ theme }) => theme.colors.secondary};
+      }
+    `};
 `;
 
 export const Logo = styled.svg`

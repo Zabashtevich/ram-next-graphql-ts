@@ -12,9 +12,7 @@ import {
 } from "./styles/AppHeader";
 
 export default function AppHeader() {
-  const router = useRouter();
-
-  console.log(router);
+  const { pathname } = useRouter();
 
   return (
     <Header>
@@ -27,13 +25,13 @@ export default function AppHeader() {
           </a>
         </LogoLink>
         <List>
-          <Item>
+          <Item linkActive={pathname === "/characters"}>
             <NavLink href="/characters">Characters</NavLink>
           </Item>
-          <Item>
+          <Item linkActive={pathname === "/locations"}>
             <NavLink href="/locations">Locations</NavLink>
           </Item>
-          <Item>
+          <Item linkActive={pathname === "/episodes"}>
             <NavLink href="/episodes">Episodes</NavLink>
           </Item>
         </List>
