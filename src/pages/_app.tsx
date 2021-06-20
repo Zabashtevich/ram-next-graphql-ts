@@ -2,6 +2,9 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { ThemeProvider } from "styled-components";
 import type { AppProps } from "next/app";
 import "normalize.css";
+
+import { GlobalStyles } from "../theme/global-styles";
+import AppLayout from "./../layout";
 import { theme } from "../theme/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -13,7 +16,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <GlobalStyles />
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
       </ThemeProvider>
     </ApolloProvider>
   );

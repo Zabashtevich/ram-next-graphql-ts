@@ -1,15 +1,36 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-export const Header = styled.header``;
+export const Header = styled.header`
+  width: 100%;
+`;
 
-export const Navigation = styled.nav``;
+export const Navigation = styled.nav`
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  display: flex;
+`;
 
-export const List = styled.ul``;
+export const List = styled.ul`
+  font-size: ${({ theme }) => theme.fontSize.navLinks};
+  display: flex;
 
-export const Item = styled.li``;
+  list-style: none;
+`;
 
-export const Logo = styled.svg``;
+export const Item = styled.li`
+  margin: 0 1rem;
+
+  > * {
+    color: ${({ theme }) => theme.colors.main};
+    text-decoration: none;
+    font-weight: 800;
+  }
+`;
+
+export const Logo = styled.svg`
+  fill: rgb(41, 41, 41);
+`;
 
 export const LogoLink = styled(Link)``;
 

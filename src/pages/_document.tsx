@@ -6,8 +6,6 @@ import Document, {
   DocumentContext,
 } from "next/document";
 
-import { AppHeader } from "./../components";
-
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -19,14 +17,14 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
+          <link rel="icon" href="/favicon.ico" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;800;900&display=swap"
             rel="stylesheet"
           />
         </Head>
         <body>
-          <AppHeader />
           <Main />
           <NextScript />
         </body>
