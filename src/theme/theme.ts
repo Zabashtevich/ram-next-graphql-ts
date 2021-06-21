@@ -7,6 +7,7 @@ const theme: DefaultTheme = {
   },
   fontSize: {
     navLinks: "1.2rem",
+    mainTitle: "6rem",
   },
 };
 

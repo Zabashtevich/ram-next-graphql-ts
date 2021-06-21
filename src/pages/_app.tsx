@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import "normalize.css";
 
 import { GlobalStyles } from "../theme/global-styles";
-import AppLayout from "./../layout";
+import AppLayout from "../layout";
 import { theme } from "../theme/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {

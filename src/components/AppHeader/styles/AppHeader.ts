@@ -38,6 +38,13 @@ export const Item = styled.li<ItemProps>`
         color: ${({ theme }) => theme.colors.secondary};
       }
     `};
+
+  :hover {
+    > * {
+      color: ${({ theme }) => theme.colors.secondary};
+      transition: 300ms;
+    }
+  }
 `;
 
 export const Logo = styled.svg`

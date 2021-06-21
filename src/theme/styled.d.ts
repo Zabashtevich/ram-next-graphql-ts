@@ -8,6 +8,7 @@ declare module "styled-components" {
     };
     fontSize: {
       navLinks: string;
+      mainTitle: string;
     };
   }
 }
