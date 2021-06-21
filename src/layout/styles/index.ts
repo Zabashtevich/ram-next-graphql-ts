@@ -10,6 +10,7 @@ export const Section = styled.section`
   height: calc(50vh - 60px);
   align-items: center;
   position: relative;
+  max-width: 1300px;
   display: flex;
 `;
 
@@ -41,5 +42,11 @@ export const Container = styled.div`
 export const Thumbnail = styled.img`
   opacity: 0.05;
   height: 100%;
+  width: 100%;
+`;
+
+export const List = styled.section`
+  background-color: ${({ theme }) => theme.colors.listBackground};
+  height: 500px;
   width: 100%;
 `;

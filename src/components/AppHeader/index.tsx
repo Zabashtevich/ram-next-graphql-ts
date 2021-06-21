@@ -12,8 +12,8 @@ import {
 } from "./styles/AppHeader";
 
 export default function AppHeader() {
-  const { pathname } = useRouter();
-
+  const { asPath } = useRouter();
+  console.log(asPath);
   return (
     <Header>
       <Navigation>
@@ -25,13 +25,13 @@ export default function AppHeader() {
           </a>
         </LogoLink>
         <List>
-          <Item linkActive={pathname === "/characters"}>
+          <Item linkActive={asPath === "/characters"}>
             <NavLink href="/characters">Characters</NavLink>
           </Item>
-          <Item linkActive={pathname === "/locations"}>
+          <Item linkActive={asPath === "/locations"}>
             <NavLink href="/locations">Locations</NavLink>
           </Item>
-          <Item linkActive={pathname === "/episodes"}>
+          <Item linkActive={asPath === "/episodes"}>
             <NavLink href="/episodes">Episodes</NavLink>
           </Item>
         </List>
