@@ -5,9 +5,9 @@ import {
   Main,
   Section,
   Title,
-  Container,
+  Inner,
   Thumbnail,
-  List,
+  Container,
 } from "./styles/index";
 
 export default function AppLayout({
@@ -21,12 +21,12 @@ export default function AppLayout({
       <Main>
         <Section>
           <Title>The Rick and Morty APP</Title>
-          <Container>
+          <Inner>
             <Thumbnail src="./ram.svg" />
-          </Container>
+          </Inner>
         </Section>
 
-        <List>{children}</List>
+        <Container>{children}</Container>
       </Main>
     </>
   );

@@ -10,6 +10,12 @@ declare module "styled-components" {
     fontSize: {
       navLinks: string;
       mainTitle: string;
+      searchTitle: string;
+      searchInput: string;
+      SearchIcon: string;
+    };
+    fontFamily: {
+      main: string;
     };
   }
 }

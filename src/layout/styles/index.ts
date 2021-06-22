@@ -33,7 +33,7 @@ export const Title = styled.h1`
   }
 `;
 
-export const Container = styled.div`
+export const Inner = styled.div`
   position: absolute;
   height: 100%;
   width: 100%;
@@ -45,8 +45,11 @@ export const Thumbnail = styled.img`
   width: 100%;
 `;
 
-export const List = styled.section`
+export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.listBackground};
+  flex-direction: column;
+  align-items: center;
+  display: flex;
   height: 500px;
   width: 100%;
 `;

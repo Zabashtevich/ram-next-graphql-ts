@@ -9,6 +9,12 @@ const theme: DefaultTheme = {
   fontSize: {
     navLinks: "1.2rem",
     mainTitle: "6rem",
+    searchTitle: "2.5rem",
+    searchInput: "1.2rem",
+    SearchIcon: "1.5rem",
+  },
+  fontFamily: {
+    main: `'Rubik', sans-serif`,
   },
 };
 
