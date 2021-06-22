@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 import { List } from "./styles/list";
 
-interface LProps<T> {
+interface CardsListProps<T> {
   items: T[];
   renderItem: (item: T) => ReactNode;
 }
 
-export default function CardsList<T>({ items, renderItem }: LProps<T>) {
+export default function CardsList<T>({ items, renderItem }: CardsListProps<T>) {
   return <List>{items.map(renderItem)}</List>;
 }
