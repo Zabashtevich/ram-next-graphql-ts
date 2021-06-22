@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 import React from "react";
 
 import {
@@ -12,8 +12,8 @@ import {
 } from "./styles/AppHeader";
 
 export default function AppHeader() {
-  const { asPath } = useRouter();
-  console.log(asPath);
+  const { asPath }: NextRouter = useRouter();
+
   return (
     <Header>
       <Navigation>

@@ -16,7 +16,11 @@ export const Title = styled.h2`
   color: whitesmoke;
 `;
 
-export const SearchIcon = styled(FaSearch)`
+type IconProps = {
+  visible: number;
+};
+
+export const SearchIcon = styled(FaSearch)<IconProps>`
   box-sizing: border-box;
   padding: 10px;
   width: 42.5px;
@@ -29,9 +33,18 @@ export const SearchIcon = styled(FaSearch)`
   text-align: center;
   font-size: 1.2em;
   transition: all 1s;
+  visibility: hidden;
+  opacity: 0;
+
+  ${({ visible }) =>
+    visible &&
+    css`
+      visibility: visible;
+      opacity: 1;
+    `};
 `;
 
-export const CloseIcon = styled(FaTimes)`
+export const CloseIcon = styled(FaTimes)<IconProps>`
   box-sizing: border-box;
   padding: 10px;
   width: 42.5px;
@@ -44,6 +57,15 @@ export const CloseIcon = styled(FaTimes)`
   text-align: center;
   font-size: 1.2em;
   transition: all 1s;
+  visibility: hidden;
+  opacity: 0;
+
+  ${({ visible }) =>
+    visible &&
+    css`
+      visibility: visible;
+      opacity: 1;
+    `};
 `;
 
 export const Input = styled.input`
@@ -82,7 +104,7 @@ export const Wrapper = styled.div<WProps>`
     css`
       width: 500px;
       cursor: pointer;
-      
+
       ${Input} {
         display: block;
       }

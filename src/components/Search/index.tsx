@@ -12,18 +12,23 @@ import {
 export default function Search() {
   const [searchActive, setSearchActive] = useState<boolean>(false);
 
-  function searchToggler(): void {
-    setSearchActive((prev) => !prev);
-  }
-
   return (
     <Section>
       <Container>
         <Title>Search character or places:</Title>
-        <Wrapper onClick={searchToggler} searchActive={searchActive}>
+        <Wrapper
+          onClick={() => setSearchActive(true)}
+          searchActive={searchActive}
+        >
           <Input type="search" placeholder="search..." />
-          {!searchActive && <SearchIcon />}
-          {searchActive && <CloseIcon />}
+          <SearchIcon visible={!searchActive ? 1 : 0} />
+          <CloseIcon
+            visible={searchActive ? 1 : 0}
+            onClick={(e) => {
+              e.stopPropagation();
+              setSearchActive(false);
+            }}
+          />
         </Wrapper>
       </Container>
     </Section>
