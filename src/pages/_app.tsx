@@ -1,4 +1,4 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import { ThemeProvider } from "styled-components";
 import type { AppProps } from "next/app";
 import "normalize.css";
@@ -6,12 +6,10 @@ import "normalize.css";
 import { GlobalStyles } from "../theme/global-styles";
 import AppLayout from "../layout";
 import { theme } from "../theme/theme";
+import graphqlClient from "../lib/graphql";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const client = new ApolloClient({
-    uri: process.env.API_URL,
-    cache: new InMemoryCache(),
-  });
+  const client = graphqlClient;
 
   return (
     <ApolloProvider client={client}>

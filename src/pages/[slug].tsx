@@ -1,12 +1,7 @@
 import Head from "next/head";
-import { useRouter, NextRouter } from "next/router";
 import { Search } from "../components";
 
 export default function Characters() {
-  const { asPath }: NextRouter = useRouter();
-
-  console.log(asPath);
-
   return (
     <>
       <Head>
