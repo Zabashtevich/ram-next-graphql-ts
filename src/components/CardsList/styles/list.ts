@@ -9,4 +9,8 @@ export const List = styled.ul`
   display: flex;
   width: 100%;
   padding: 0;
+
+  @media (max-width: 650px) {
+    padding: 0 1.5rem;
+  }
 `;

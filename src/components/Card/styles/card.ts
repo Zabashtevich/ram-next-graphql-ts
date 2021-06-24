@@ -8,6 +8,12 @@ export const Item = styled.article`
   height: 220px;
   display: flex;
   width: 600px;
+
+  @media (max-width: 650px) {
+    flex-direction: column;
+    height: initial;
+    width: 100%;
+  }
 `;
 
 interface ThumbnailProps {
@@ -17,7 +23,10 @@ interface ThumbnailProps {
 export const Thumbnail = styled.img<ThumbnailProps>`
   object-position: center center;
   object-fit: cover;
-  flex: 2 1 0%;
+
+  @media (max-width: 650px) {
+    height: 300px;
+  }
 `;
 
 export const Info = styled.div`
@@ -92,6 +101,10 @@ export const Status = styled.span<StatusProps>`
 export const Row = styled.div`
   flex-direction: column;
   display: flex;
+
+  @media (max-width: 650px) {
+    margin-top: 2rem;
+  }
 `;
 
 export const Subtitle = styled.span`

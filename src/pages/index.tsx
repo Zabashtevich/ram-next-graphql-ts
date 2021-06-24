@@ -15,7 +15,7 @@ export default function Home({ data, error }: HomePageProps) {
       </Head>
       {data && (
         <CardsList
-          items={data.characters.results}
+          items={data.characters.results.slice(0, 6)}
           renderItem={(item) => <Card key={item.id} item={item} />}
         />
       )}
