@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AppHeader } from "../components";
+import { AppHeader, Footer } from "../components";
 import {
   Main,
   Section,
@@ -27,6 +27,7 @@ export default function AppLayout({
         </Section>
 
         <Container>{children}</Container>
+        <Footer />
       </Main>
     </>
   );
