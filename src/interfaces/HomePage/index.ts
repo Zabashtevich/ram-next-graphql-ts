@@ -8,6 +8,10 @@ export type HomePageRequestItem = {
     name: string;
     id: string;
   };
+  origin: {
+    name: string;
+    id: string;
+  };
 };
 
 export interface HomePageRequestData {

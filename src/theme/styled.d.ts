@@ -7,6 +7,16 @@ declare module "styled-components" {
       secondary: string;
       listBackground: string;
       cardBackground: string;
+      statusIcon: {
+        dead: string;
+        alive: string;
+        unknown: string;
+      };
+
+      card: {
+        main: string;
+        subtitle: string;
+      };
     };
     fontSize: {
       navLinks: string;
@@ -14,6 +24,13 @@ declare module "styled-components" {
       searchTitle: string;
       searchInput: string;
       SearchIcon: string;
+
+      card: {
+        title: string;
+        status: string;
+        subtitle: string;
+        value: string;
+      };
     };
     fontFamily: {
       main: string;
