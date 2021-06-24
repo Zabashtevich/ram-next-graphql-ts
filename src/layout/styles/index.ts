@@ -49,7 +49,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.listBackground};
   flex-direction: column;
   align-items: center;
+  padding: 4.5rem 0;
   display: flex;
-  height: 500px;
   width: 100%;
 `;

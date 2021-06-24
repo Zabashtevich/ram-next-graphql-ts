@@ -1,7 +1,9 @@
-type HomePageRequestItem = {
+export type HomePageRequestItem = {
   id: string;
   name: string;
   status: string;
+  species: string;
+  image: string;
   location: {
     name: string;
     id: string;

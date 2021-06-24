@@ -6,6 +6,7 @@ declare module "styled-components" {
       main: string;
       secondary: string;
       listBackground: string;
+      cardBackground: string;
     };
     fontSize: {
       navLinks: string;

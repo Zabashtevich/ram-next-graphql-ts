@@ -5,6 +5,8 @@ const GET_HOME_CARDS = gql`
     characters {
       results {
         status
+        species
+        image
         origin {
           id
           name

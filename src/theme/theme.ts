@@ -5,6 +5,7 @@ const theme: DefaultTheme = {
     main: "rgb(51,51,51)",
     secondary: "rgb(255, 152, 0)",
     listBackground: "rgb(36, 40, 47)",
+    cardBackground: "rgb(60, 62, 68)",
   },
   fontSize: {
     navLinks: "1.2rem",
