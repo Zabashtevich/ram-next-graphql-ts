@@ -5,8 +5,8 @@ declare module "styled-components" {
     colors: {
       main: string;
       secondary: string;
+
       listBackground: string;
-      footerBackground: string;
 
       statusIcon: {
         dead: string;
@@ -21,6 +21,7 @@ declare module "styled-components" {
       };
 
       footer: {
+        footerBackground: string;
         main: string;
       };
     };

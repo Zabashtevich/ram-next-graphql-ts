@@ -1,6 +1,6 @@
 import { GetServerSidePropsResult, NextPageContext } from "next";
 
-import { Details, Location } from "../../../components";
+import { Details, Location, Residents } from "../../../components";
 import {
   LocationVariables,
   LocationRequestData,
@@ -14,6 +14,7 @@ export default function LocationPage({ data, error }: LocationPageProps) {
     data && (
       <Details>
         <Location item={data} />
+        <Residents residents={data.location.residents} />
       </Details>
     )
   );
