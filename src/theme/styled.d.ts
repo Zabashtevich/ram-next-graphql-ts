@@ -7,6 +7,8 @@ declare module "styled-components" {
       secondary: string;
       listBackground: string;
       cardBackground: string;
+      footerBackground: string;
+
       statusIcon: {
         dead: string;
         alive: string;
@@ -16,6 +18,10 @@ declare module "styled-components" {
       card: {
         main: string;
         subtitle: string;
+      };
+
+      footer: {
+        main: string;
       };
     };
     fontSize: {
