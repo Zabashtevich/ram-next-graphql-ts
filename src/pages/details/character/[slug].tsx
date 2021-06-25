@@ -1,14 +1,14 @@
 import { GetServerSidePropsResult, NextPageContext } from "next";
 import { Character, Details } from "../../../components";
 import {
-  CharacterPageProps,
-  CharacterPageRequestItem,
-  CharacterPageQueryVariables,
-} from "../../../interfaces/Details/character";
+  CharacterProps,
+  CharacterRequestData,
+  CharacterVariables,
+} from "../../../interfaces/Character";
 import graphqlClient from "../../../lib/graphql";
 import { GET_CHARACTER_BY_ID } from "../../../request";
 
-export default function CharacterPage({ item, error }: CharacterPageProps) {
+export default function CharacterPage({ item, error }: CharacterProps) {
   return (
     item && (
       <Details>
@@ -26,10 +26,10 @@ interface ContextWithQuery extends NextPageContext {
 
 export async function getServerSideProps({
   query,
-}: ContextWithQuery): Promise<GetServerSidePropsResult<CharacterPageProps>> {
+}: ContextWithQuery): Promise<GetServerSidePropsResult<CharacterProps>> {
   const { data, error } = await graphqlClient.query<
-    CharacterPageRequestItem,
-    CharacterPageQueryVariables
+    CharacterRequestData,
+    CharacterVariables
   >({
     query: GET_CHARACTER_BY_ID,
     variables: {

@@ -1,20 +1,8 @@
-export type HomePageRequestItem = {
-  id: string;
-  name: string;
-  status: string;
-  species: string;
-  image: string;
-  location: {
-    name: string;
-    id: string;
-  };
-  origin: {
-    name: string;
-    id: string;
-  };
-};
+import { CharacterItem } from "../Character";
 
-export interface HomePageRequestData {
+export interface HomePageRequestItem extends CharacterItem {}
+
+export interface HomeRequestData {
   characters: {
     results: HomePageRequestItem[];
   };
@@ -22,5 +10,5 @@ export interface HomePageRequestData {
 
 export interface HomePageProps {
   error?: boolean;
-  data?: HomePageRequestData;
+  data?: HomeRequestData;
 }
