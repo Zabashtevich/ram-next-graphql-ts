@@ -4,15 +4,18 @@ import { Details, Location } from "../../../components";
 import {
   LocationVariables,
   LocationRequestData,
+  LocationPageProps,
 } from "../../../interfaces/Location";
 import graphqlClient from "../../../lib/graphql";
 import { GET_LOCATION_BY_ID } from "../../../request";
 
-export default function LocationPage() {
+export default function LocationPage({ data, error }: LocationPageProps) {
   return (
-    <Details>
-      <Location />
-    </Details>
+    data && (
+      <Details>
+        <Location item={data} />
+      </Details>
+    )
   );
 }
 
@@ -24,7 +27,7 @@ interface ContextWithQuery extends NextPageContext {
 
 export async function getServerSideProps({
   query,
-}: ContextWithQuery): Promise<GetServerSidePropsResult<LocationRequestData>> {
+}: ContextWithQuery): Promise<GetServerSidePropsResult<LocationPageProps>> {
   const { data, error } = await graphqlClient.query<
     LocationRequestData,
     LocationVariables
@@ -35,5 +38,17 @@ export async function getServerSideProps({
     },
   });
 
-  return { props: data };
+  if (error) {
+    return {
+      props: {
+        error: true,
+      },
+    };
+  }
+
+  return {
+    props: {
+      data,
+    },
+  };
 }

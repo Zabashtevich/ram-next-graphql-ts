@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const Item = styled.article`
-  background-color: ${({ theme }) => theme.colors.cardBackground};
+  background-color: ${({ theme }) => theme.colors.card.cardBackground};
   border-radius: 0.5rem;
   overflow: hidden;
   margin: 0.75rem;

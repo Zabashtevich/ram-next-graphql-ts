@@ -6,7 +6,6 @@ declare module "styled-components" {
       main: string;
       secondary: string;
       listBackground: string;
-      cardBackground: string;
       footerBackground: string;
 
       statusIcon: {
@@ -16,6 +15,7 @@ declare module "styled-components" {
       };
 
       card: {
+        cardBackground: string;
         main: string;
         subtitle: string;
       };

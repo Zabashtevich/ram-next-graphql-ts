@@ -7,9 +7,9 @@ export interface LocationRequestData {
   };
 }
 
-export interface LocationProps {
+export interface LocationPageProps {
   error?: boolean;
-  item?: LocationRequestData;
+  data?: LocationRequestData;
 }
 
 export interface LocationVariables {

@@ -5,7 +5,6 @@ const theme: DefaultTheme = {
     main: "rgb(51,51,51)",
     secondary: "rgb(255, 152, 0)",
     listBackground: "rgb(36, 40, 47)",
-    cardBackground: "rgb(60, 62, 68)",
     footerBackground: "rgb(32, 35, 41)",
     statusIcon: {
       dead: "rgb(214, 61, 46)",
@@ -14,6 +13,7 @@ const theme: DefaultTheme = {
     },
 
     card: {
+      cardBackground: "rgb(60, 62, 68)",
       main: "rgb(245, 245, 245)",
       subtitle: "rgb(158, 158, 158)",
     },
