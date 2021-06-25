@@ -13,9 +13,9 @@ import {
   Subtitle,
   Value,
   LinkWrapper,
-} from "./styles/card";
+} from "./styles/character";
 
-interface CardProps {
+interface CharacterProps {
   item: HomePageRequestItem;
 }
 
@@ -25,7 +25,7 @@ interface ILiveStatus {
   unknown: boolean;
 }
 
-export default function Card({ item }: CardProps) {
+export default function Character({ item }: CharacterProps) {
   const liveStatus: ILiveStatus = {
     alive: stringContains(item.status, /alive/i),
     dead: stringContains(item.status, /dead/i),

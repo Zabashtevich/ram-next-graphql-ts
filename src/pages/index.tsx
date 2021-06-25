@@ -1,7 +1,7 @@
 import { GetStaticPropsResult } from "next";
 import Head from "next/head";
 
-import { CardsList, Card } from "../components";
+import { CardsList, Character } from "../components";
 import { HomePageRequestData, HomePageProps } from "../interfaces/HomePage";
 import graphqlClient from "../lib/graphql";
 import { GET_HOME_CARDS } from "../request";
@@ -16,7 +16,7 @@ export default function Home({ data, error }: HomePageProps) {
       {data && (
         <CardsList
           items={data.characters.results.slice(0, 6)}
-          renderItem={(item) => <Card key={item.id} item={item} />}
+          renderItem={(item) => <Character key={item.id} item={item} />}
         />
       )}
     </>
