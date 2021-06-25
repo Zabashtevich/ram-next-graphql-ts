@@ -12,7 +12,7 @@ export default function CharacterPage({ item, error }: CharacterPageProps) {
   return (
     item && (
       <Details>
-        <Character item={item} />
+        <Character item={item.character} />
       </Details>
     )
   );

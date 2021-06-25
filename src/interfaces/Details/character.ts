@@ -4,18 +4,20 @@ export interface CharacterPageProps {
 }
 
 export interface CharacterPageRequestItem {
-  id: string;
-  name: string;
-  status: string;
-  species: string;
-  image: string;
-  location: {
-    name: string;
+  character: {
     id: string;
-  };
-  origin: {
     name: string;
-    id: string;
+    status: string;
+    species: string;
+    image: string;
+    location: {
+      name: string;
+      id: string;
+    };
+    origin: {
+      name: string;
+      id: string;
+    };
   };
 }
 

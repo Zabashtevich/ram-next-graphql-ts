@@ -37,7 +37,7 @@ export default function Character({ item }: CharacterProps) {
       <Thumbnail src={item.image} alt={`picture of ${item.name}`} />
       <Info>
         <Header>
-          <Link href="/123" passHref>
+          <Link href={`/details/character/${item.id}`} passHref>
             <LinkWrapper>
               <Title>{item.name}</Title>
             </LinkWrapper>
@@ -51,15 +51,15 @@ export default function Character({ item }: CharacterProps) {
 
         <Row>
           <Subtitle>Last known location:</Subtitle>
-          <Link href="/123" passHref>
+          <Link href={`/details/locations/${item.location.id}`} passHref>
             <LinkWrapper>
               <Value>{item.location.name}</Value>
             </LinkWrapper>
           </Link>
         </Row>
         <Row>
-          <Subtitle>First seen in::</Subtitle>
-          <Link href="/123" passHref>
+          <Subtitle>First seen in:</Subtitle>
+          <Link href={`/details/locations/${item.origin.id}`} passHref>
             <LinkWrapper>
               <Value>{item.origin.name}</Value>
             </LinkWrapper>
