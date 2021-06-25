@@ -51,7 +51,7 @@ export default function Character({ item }: CharacterProps) {
 
         <Row>
           <Subtitle>Last known location:</Subtitle>
-          <Link href={`/details/locations/${item.location.id}`} passHref>
+          <Link href={`/details/location/${item.location.id}`} passHref>
             <LinkWrapper>
               <Value>{item.location.name}</Value>
             </LinkWrapper>
@@ -59,7 +59,7 @@ export default function Character({ item }: CharacterProps) {
         </Row>
         <Row>
           <Subtitle>First seen in:</Subtitle>
-          <Link href={`/details/locations/${item.origin.id}`} passHref>
+          <Link href={`/details/episode/${item.origin.id}`} passHref>
             <LinkWrapper>
               <Value>{item.origin.name}</Value>
             </LinkWrapper>
