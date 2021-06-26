@@ -1,5 +1,5 @@
 import { Container, Item } from "./styles/pagination";
-import { range } from "../../utils";
+import { getPaginationOffset, range } from "../../utils";
 
 interface IPagination {
   activePage: number;
@@ -14,15 +14,17 @@ export default function Pagination({
 }: IPagination) {
   return (
     <Container>
-      {range(1, amount).map((item) => (
-        <Item
-          key={item}
-          selected={item === activePage ? 1 : 0}
-          onClick={() => setActivePage(item)}
-        >
-          {item}
-        </Item>
-      ))}
+      {range(1, amount)
+        .slice(...getPaginationOffset(activePage, amount))
+        .map((item) => (
+          <Item
+            key={item}
+            selected={item === activePage ? 1 : 0}
+            onClick={() => setActivePage(item)}
+          >
+            {item}
+          </Item>
+        ))}
     </Container>
   );
 }

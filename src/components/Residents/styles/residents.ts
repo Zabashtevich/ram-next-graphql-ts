@@ -49,7 +49,13 @@ type PosterProps = {
 export const Poster = styled.img<PosterProps>`
   object-position: center center;
   object-fit: cover;
-  width: 40%;
+  height: 120px;
+  width: 120px;
+
+  @media (max-width: 500px) {
+    height: 100px;
+    width: 100px;
+  }
 `;
 
 export const Subtitle = styled.a`

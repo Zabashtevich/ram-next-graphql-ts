@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.section`
+  justify-content: center;
   align-items: center;
   margin-top: 5rem;
+  flex-wrap: wrap;
   display: flex;
 `;
 
@@ -19,9 +21,10 @@ export const Item = styled.span<ItemProps>`
   text-align: center;
   padding: 0.4rem 0;
   font-size: 1.2rem;
-  margin: 0 0.2rem;
+  user-select: none;
   font-weight: 500;
   cursor: pointer;
+  margin: 0.2rem;
   width: 40px;
 
   :hover {
@@ -40,4 +43,10 @@ export const Item = styled.span<ItemProps>`
         filter: none;
       }
     `};
+
+  @media (max-width: 500px) {
+    padding: 0.2rem 0;
+    font-size: 1rem;
+    width: 30px;
+  }
 `;
