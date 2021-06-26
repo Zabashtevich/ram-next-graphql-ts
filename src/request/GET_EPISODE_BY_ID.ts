@@ -9,6 +9,7 @@ const GET_EPISODE_BY_ID = gql`
       characters {
         id
         name
+        image
       }
     }
   }
