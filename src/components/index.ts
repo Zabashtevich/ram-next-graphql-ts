@@ -7,3 +7,4 @@ export { default as Details } from "./Details";
 export { default as Location } from "./Location";
 export { default as Residents } from "./Residents";
 export { default as Pagination } from "./Pagination";
+export { default as Episode } from "./Episode";
