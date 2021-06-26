@@ -1,6 +1,7 @@
 import { GetServerSidePropsResult, NextPageContext } from "next";
+import { useState } from "react";
 
-import { Details, Location, Residents } from "../../../components";
+import { Details, Location, Pagination, Residents } from "../../../components";
 import {
   LocationVariables,
   LocationRequestData,
@@ -10,11 +11,23 @@ import graphqlClient from "../../../lib/graphql";
 import { GET_LOCATION_BY_ID } from "../../../request";
 
 export default function LocationPage({ data, error }: LocationPageProps) {
+  const [activePage, setActivePage] = useState(1);
+
   return (
     data && (
       <Details>
         <Location item={data} />
-        <Residents residents={data.location.residents} />
+        <Residents
+          residents={data.location.residents.slice(
+            activePage * 10 - 10,
+            activePage * 10,
+          )}
+        />
+        <Pagination
+          activePage={activePage}
+          setActivePage={setActivePage}
+          amount={Math.floor(data.location.residents.length / 10)}
+        />
       </Details>
     )
   );
