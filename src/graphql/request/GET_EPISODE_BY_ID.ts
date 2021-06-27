@@ -7,7 +7,7 @@ const GET_EPISODE_BY_ID = gql`
       name
       air_date
       episode
-      characters @include(if: $withCharacters) {
+      characters {
         id
         name
         image

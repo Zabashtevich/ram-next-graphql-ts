@@ -7,12 +7,12 @@ import { ILocationWithResidents } from "../../../interfaces/location";
 import graphqlClient from "../../../lib/graphql";
 import { GET_LOCATION_BY_ID } from "../../../graphql";
 
-interface ILocationPage {
-  data?: ILocationWithResidents;
+interface IProps {
+  data?: { location: ILocationWithResidents };
   error?: boolean;
 }
 
-export default function LocationPage({ data, error }: ILocationPage) {
+export default function LocationPage({ data, error }: IProps) {
   const [activePage, setActivePage] = useState(1);
 
   return (
@@ -41,13 +41,14 @@ interface ContextWithQuery extends NextPageContext {
   };
 }
 
+interface IRequest {
+  location: ILocationWithResidents;
+}
+
 export async function getServerSideProps({
   query,
-}: ContextWithQuery): Promise<GetServerSidePropsResult<ILocationPage>> {
-  const { data, error } = await graphqlClient.query<
-    ILocationWithResidents,
-    QuerieVariables
-  >({
+}: ContextWithQuery): Promise<GetServerSidePropsResult<IProps>> {
+  const { data, error } = await graphqlClient.query<IRequest, QuerieVariables>({
     query: GET_LOCATION_BY_ID,
     variables: {
       id: query.slug,

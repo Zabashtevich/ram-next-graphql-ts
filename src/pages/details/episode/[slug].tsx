@@ -7,18 +7,18 @@ import { IEpisodeWithCharacters } from "../../../interfaces/episode";
 import graphqlClient from "../../../lib/graphql";
 import { GET_EPISODE_BY_ID } from "../../../graphql";
 
-interface IEpisodePage {
+interface IProps {
   data?: { episode: IEpisodeWithCharacters };
   error?: boolean;
 }
 
-export default function EpisodePage({ data, error }: IEpisodePage) {
+export default function EpisodePage({ data, error }: IProps) {
   const [activePage, setActivePage] = useState(1);
 
   return (
     data && (
       <Details>
-        <Episode episode={data} />
+        <Episode episode={data.episode} />
         <Residents
           residents={data.episode.characters.slice(
             activePage * 10 - 10,
@@ -41,17 +41,17 @@ interface ContextWithQuery extends NextPageContext {
   };
 }
 
+interface IRequest {
+  episode: IEpisodeWithCharacters;
+}
+
 export async function getServerSideProps({
   query,
-}: ContextWithQuery): Promise<GetServerSidePropsResult<IEpisodePage>> {
-  const { error, data } = await graphqlClient.query<
-    IEpisodeWithCharacters,
-    QuerieVariables
-  >({
+}: ContextWithQuery): Promise<GetServerSidePropsResult<IProps>> {
+  const { error, data } = await graphqlClient.query<IRequest, QuerieVariables>({
     query: GET_EPISODE_BY_ID,
     variables: {
       id: query.slug,
-      withCharacters: true,
     },
   });
 

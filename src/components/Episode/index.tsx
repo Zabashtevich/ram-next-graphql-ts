@@ -1,25 +1,25 @@
 import { IEpisodeWithCharacters } from "../../interfaces/episode";
 import { Card, Header, Title, Row, Subtitle, Value } from "./styles/episode";
 
-interface EpisodeProps {
+interface IProps {
   episode: IEpisodeWithCharacters;
 }
 
-export default function Episode({ episode }: EpisodeProps) {
+export default function Episode({ episode }: IProps) {
   return (
     <Card>
       <Header>
-        <Title>{episode.episode.name}</Title>
+        <Title>{episode.name}</Title>
       </Header>
 
       <Row>
         <Subtitle>Air date:</Subtitle>
-        <Value>{episode.episode.air_date}</Value>
+        <Value>{episode.air_date}</Value>
       </Row>
 
       <Row>
         <Subtitle>Episode:</Subtitle>
-        <Value>{episode.episode.episode}</Value>
+        <Value>{episode.episode}</Value>
       </Row>
     </Card>
   );
