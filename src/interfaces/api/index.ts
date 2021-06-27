@@ -6,10 +6,14 @@ export interface ApiVariables {
   name: string;
 }
 
-export interface ApiRequest {
-  data?:
+export interface IProps {
+  error?: boolean;
+  results?: IApiResponse;
+}
+
+export interface IApiResponse {
+  data:
     | ICharacters
     | { locations: { results: ILocation[] } }
     | { episodes: { results: IEpisode[] } };
-  error?: boolean;
 }
