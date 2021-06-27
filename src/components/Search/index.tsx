@@ -11,7 +11,7 @@ import {
 
 export default function Search({ onChange }: any) {
   const [searchActive, setSearchActive] = useState<boolean>(false);
-  console.log(onChange);
+
   return (
     <Section>
       <Container>
@@ -20,7 +20,7 @@ export default function Search({ onChange }: any) {
           onClick={() => setSearchActive(true)}
           searchActive={searchActive}
         >
-          <Input type="search" placeholder="search a character..." />
+          <Input type="search" placeholder="Search..." />
           <SearchIcon visible={!searchActive ? 1 : 0} />
           <CloseIcon
             visible={searchActive ? 1 : 0}

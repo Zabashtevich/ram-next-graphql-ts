@@ -37,7 +37,11 @@ export default function Character({ item }: CharacterProps) {
       <Thumbnail src={item.image} alt={`picture of ${item.name}`} />
       <Info>
         <Header>
-          <Title>{item.name}</Title>
+          <Link href={`/details/character/${item.id}`} passHref>
+            <LinkWrapper>
+              <Title>{item.name}</Title>
+            </LinkWrapper>
+          </Link>
           <Status
             alive={liveStatus.alive ? 1 : 0}
             dead={liveStatus.dead ? 1 : 0}

@@ -48,6 +48,7 @@ export async function getServerSideProps({
     query: GET_EPISODE_BY_ID,
     variables: {
       id: query.slug,
+      withCharacters: true,
     },
   });
 

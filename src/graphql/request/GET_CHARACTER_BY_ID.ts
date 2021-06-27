@@ -6,6 +6,8 @@ const GET_CHARACTER_BY_ID = gql`
       status
       species
       image
+      name
+      id
       origin {
         id
         name
@@ -14,8 +16,6 @@ const GET_CHARACTER_BY_ID = gql`
         name
         id
       }
-      name
-      id
     }
   }
 `;
