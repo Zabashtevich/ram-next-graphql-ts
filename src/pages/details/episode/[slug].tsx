@@ -23,7 +23,7 @@ export default function EpisodePage({ data, error }: EpisodePageProps) {
           )}
         />
         <Pagination
-          amount={Math.floor(data.episode.characters.length / 10)}
+          amount={Math.ceil(data.episode.characters.length / 10)}
           activePage={activePage}
           setActivePage={setActivePage}
         />

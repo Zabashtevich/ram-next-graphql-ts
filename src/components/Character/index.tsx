@@ -37,11 +37,7 @@ export default function Character({ item }: CharacterProps) {
       <Thumbnail src={item.image} alt={`picture of ${item.name}`} />
       <Info>
         <Header>
-          <Link href={`/details/character/${item.id}`} passHref>
-            <LinkWrapper>
-              <Title>{item.name}</Title>
-            </LinkWrapper>
-          </Link>
+          <Title>{item.name}</Title>
           <Status
             alive={liveStatus.alive ? 1 : 0}
             dead={liveStatus.dead ? 1 : 0}
@@ -59,11 +55,14 @@ export default function Character({ item }: CharacterProps) {
         </Row>
         <Row>
           <Subtitle>First seen in:</Subtitle>
-          <Link href={`/details/episode/${item.origin.id}`} passHref>
-            <LinkWrapper>
-              <Value>{item.origin.name}</Value>
-            </LinkWrapper>
-          </Link>
+          {item.origin.id && (
+            <Link href={`/details/episode/${item.origin.id}`} passHref>
+              <LinkWrapper>
+                <Value>{item.origin.name}</Value>
+              </LinkWrapper>
+            </Link>
+          )}
+          {!item.origin.id && <Value>{item.origin.name}</Value>}
         </Row>
       </Info>
     </Item>

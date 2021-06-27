@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { ResidentsType } from "../../interfaces/Location";
 import {
   Container,
@@ -22,7 +24,9 @@ export default function Residents({
         {residents.map((item) => (
           <Card key={item.id}>
             <Poster src={item.image} />
-            <Subtitle>{item.name}</Subtitle>
+            <Link href={`/details/character/${item.id}`} passHref>
+              <Subtitle>{item.name}</Subtitle>
+            </Link>
           </Card>
         ))}
       </List>

@@ -26,7 +26,7 @@ export default function LocationPage({ data, error }: LocationPageProps) {
         <Pagination
           activePage={activePage}
           setActivePage={setActivePage}
-          amount={Math.floor(data.location.residents.length / 10)}
+          amount={Math.ceil(data.location.residents.length / 10)}
         />
       </Details>
     )

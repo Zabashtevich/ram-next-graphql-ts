@@ -62,10 +62,16 @@ export const Subtitle = styled.a`
   font-size: ${({ theme }) => theme.fontSize.card.subtitle};
   color: ${({ theme }) => theme.colors.card.main};
   text-overflow: ellipsis;
+  text-decoration: none;
   margin-left: 0.5rem;
   white-space: nowrap;
   padding: 0 0.5rem;
   overflow: hidden;
   font-weight: 500;
   margin: 0 auto;
+
+  :hover {
+    color: ${({ theme }) => theme.colors.secondary};
+    transition: 300ms;
+  }
 `;

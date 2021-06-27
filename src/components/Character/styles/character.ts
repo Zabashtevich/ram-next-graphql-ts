@@ -48,7 +48,9 @@ export const LinkWrapper = styled.a`
   text-decoration: none;
 
   :hover {
-    color: ${({ theme }) => theme.colors.secondary};
+    & > * {
+      color: ${({ theme }) => theme.colors.secondary};
+    }
     transition: 300ms;
   }
 `;
@@ -121,9 +123,4 @@ export const Value = styled.span`
   line-height: 26px;
   font-weight: 300;
   display: block;
-
-  :hover {
-    color: ${({ theme }) => theme.colors.secondary};
-    transition: 300ms;
-  }
 `;
