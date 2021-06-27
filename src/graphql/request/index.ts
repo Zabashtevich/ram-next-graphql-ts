@@ -1,6 +1,4 @@
-import { gql } from "@apollo/client";
-
-export const CHARACTER_FRAGMENT = `
+export const CHARACTERS_FRAGMENT = `
   fragment Character on Characters {
     results {
       status
@@ -19,3 +17,5 @@ export const CHARACTER_FRAGMENT = `
     }
   }
 `;
+
+export const LOCATIONS_FRAGMENT = ``;

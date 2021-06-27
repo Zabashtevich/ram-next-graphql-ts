@@ -1,4 +1,4 @@
-import { CHARACTER_FRAGMENT } from "./../../graphql/request";
+import { CHARACTERS_FRAGMENT } from "./../../graphql/request";
 import { gql } from "@apollo/client";
 
 const GET_HOME_CARDS = gql`
@@ -7,7 +7,7 @@ const GET_HOME_CARDS = gql`
       ...Character
     }
   }
-  ${CHARACTER_FRAGMENT}
+  ${CHARACTERS_FRAGMENT}
 `;
 
 export default GET_HOME_CARDS;
