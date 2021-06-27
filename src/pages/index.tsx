@@ -2,11 +2,16 @@ import { GetStaticPropsResult } from "next";
 import Head from "next/head";
 
 import { CardsList, Character } from "../components";
-import { HomeRequestData, HomePageProps } from "../interfaces/HomePage";
+import { ICharacters } from "../interfaces/characters";
 import graphqlClient from "../lib/graphql";
 import { GET_HOME_CARDS } from "../request";
 
-export default function Home({ data, error }: HomePageProps) {
+interface IHome {
+  data?: ICharacters;
+  error?: boolean;
+}
+
+export default function Home({ data, error }: IHome) {
   return (
     <>
       <Head>
@@ -23,10 +28,8 @@ export default function Home({ data, error }: HomePageProps) {
   );
 }
 
-export async function getStaticProps(): Promise<
-  GetStaticPropsResult<HomePageProps>
-> {
-  const { error, data } = await graphqlClient.query<HomeRequestData>({
+export async function getStaticProps(): Promise<GetStaticPropsResult<IHome>> {
+  const { error, data } = await graphqlClient.query<ICharacters>({
     query: GET_HOME_CARDS,
   });
 

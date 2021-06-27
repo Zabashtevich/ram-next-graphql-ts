@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { ResidentsType } from "../../interfaces/Location";
 import {
   Container,
   Title,
@@ -10,13 +9,11 @@ import {
   List,
 } from "./styles/residents";
 
-interface ResidentsProps<T> {
-  residents: T[];
+interface ResidentsProps {
+  residents: { name: string; id: string; image: string }[];
 }
 
-export default function Residents({
-  residents,
-}: ResidentsProps<ResidentsType>) {
+export default function Residents({ residents }: ResidentsProps) {
   return (
     <Container>
       <Title>List of residents:</Title>

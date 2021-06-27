@@ -4,13 +4,18 @@ import { useState, useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce/lib";
 
 import { Search } from "../components";
-import { HomePageProps, HomeRequestData } from "../interfaces/HomePage";
+import { ICharacters } from "../interfaces/characters";
 import graphqlClient from "../lib/graphql";
 import { GET_HOME_CARDS } from "../request";
 
-export default function Characters({ data, error }: HomePageProps) {
+interface ISearchPage {
+  data?: ICharacters;
+  error?: boolean;
+}
+
+export default function SearchPage({ data, error }: ISearchPage) {
   const initialState = data?.characters;
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(null);
   const [value, setValue] = useState("");
 
   const debounced = useDebouncedCallback((value) => {
@@ -38,9 +43,9 @@ export default function Characters({ data, error }: HomePageProps) {
 }
 
 export async function getServerSideProps(): Promise<
-  GetStaticPropsResult<HomePageProps>
+  GetStaticPropsResult<ISearchPage>
 > {
-  const { error, data } = await graphqlClient.query<HomeRequestData>({
+  const { error, data } = await graphqlClient.query<ICharacters>({
     query: GET_HOME_CARDS,
   });
 

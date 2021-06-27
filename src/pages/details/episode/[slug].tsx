@@ -1,15 +1,18 @@
 import { GetServerSidePropsResult, NextPageContext } from "next";
 import { useState } from "react";
+
 import { Details, Episode, Pagination, Residents } from "../../../components";
-import {
-  EpisodePageProps,
-  EpisodeVariables,
-  IEpisode,
-} from "../../../interfaces/Episode";
+import { QuerieVariables } from "../../../interfaces";
+import { IEpisode } from "../../../interfaces/episode";
 import graphqlClient from "../../../lib/graphql";
 import { GET_EPISODE_BY_ID } from "../../../request";
 
-export default function EpisodePage({ data, error }: EpisodePageProps) {
+interface IEpisodePage {
+  data?: IEpisode;
+  error?: boolean;
+}
+
+export default function EpisodePage({ data, error }: IEpisodePage) {
   const [activePage, setActivePage] = useState(1);
 
   return (
@@ -40,15 +43,13 @@ interface ContextWithQuery extends NextPageContext {
 
 export async function getServerSideProps({
   query,
-}: ContextWithQuery): Promise<GetServerSidePropsResult<EpisodePageProps>> {
-  const { error, data } = await graphqlClient.query<IEpisode, EpisodeVariables>(
-    {
-      query: GET_EPISODE_BY_ID,
-      variables: {
-        id: query.slug,
-      },
+}: ContextWithQuery): Promise<GetServerSidePropsResult<IEpisodePage>> {
+  const { error, data } = await graphqlClient.query<IEpisode, QuerieVariables>({
+    query: GET_EPISODE_BY_ID,
+    variables: {
+      id: query.slug,
     },
-  );
+  });
 
   if (error) {
     return {

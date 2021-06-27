@@ -1,4 +1,4 @@
-import { IEpisode } from "../../interfaces/Episode";
+import { IEpisode } from "../../interfaces/episode";
 import { Card, Header, Title, Row, Subtitle, Value } from "./styles/episode";
 
 interface EpisodeProps {

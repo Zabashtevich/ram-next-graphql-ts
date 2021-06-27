@@ -2,15 +2,17 @@ import { GetServerSidePropsResult, NextPageContext } from "next";
 import { useState } from "react";
 
 import { Details, Location, Pagination, Residents } from "../../../components";
-import {
-  LocationVariables,
-  LocationRequestData,
-  LocationPageProps,
-} from "../../../interfaces/Location";
+import { QuerieVariables } from "../../../interfaces";
+import { ILocation } from "../../../interfaces/Location";
 import graphqlClient from "../../../lib/graphql";
 import { GET_LOCATION_BY_ID } from "../../../request";
 
-export default function LocationPage({ data, error }: LocationPageProps) {
+interface ILocationPage {
+  data?: ILocation;
+  error?: boolean;
+}
+
+export default function LocationPage({ data, error }: ILocationPage) {
   const [activePage, setActivePage] = useState(1);
 
   return (
@@ -41,16 +43,15 @@ interface ContextWithQuery extends NextPageContext {
 
 export async function getServerSideProps({
   query,
-}: ContextWithQuery): Promise<GetServerSidePropsResult<LocationPageProps>> {
-  const { data, error } = await graphqlClient.query<
-    LocationRequestData,
-    LocationVariables
-  >({
-    query: GET_LOCATION_BY_ID,
-    variables: {
-      id: query.slug,
+}: ContextWithQuery): Promise<GetServerSidePropsResult<ILocationPage>> {
+  const { data, error } = await graphqlClient.query<ILocation, QuerieVariables>(
+    {
+      query: GET_LOCATION_BY_ID,
+      variables: {
+        id: query.slug,
+      },
     },
-  });
+  );
 
   if (error) {
     return {

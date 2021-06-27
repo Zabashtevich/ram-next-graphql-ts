@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { ICharacterItem } from "../../interfaces/characters";
 
-import { HomePageRequestItem } from "../../interfaces/HomePage";
 import { stringContains } from "../../utils";
 import {
   Item,
@@ -16,7 +16,7 @@ import {
 } from "./styles/character";
 
 interface CharacterProps {
-  item: HomePageRequestItem;
+  item: ICharacterItem;
 }
 
 interface ILiveStatus {
