@@ -34,6 +34,8 @@ export const SearchIcon = styled(FaSearch)<IconProps>`
   font-size: 1.2em;
   transition: all 1s;
   visibility: hidden;
+  cursor: pointer;
+
   opacity: 0;
 
   ${({ visible }) =>
