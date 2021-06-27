@@ -3,7 +3,7 @@ import { Character, Details } from "../../../components";
 import { QuerieVariables } from "../../../interfaces";
 import { ICharacterItem } from "../../../interfaces/characters";
 import graphqlClient from "../../../lib/graphql";
-import { GET_CHARACTER_BY_ID } from "../../../request";
+import { GET_CHARACTER_BY_ID } from "../../../graphql";
 
 interface ICharacterPage {
   item?: {

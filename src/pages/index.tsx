@@ -4,7 +4,7 @@ import Head from "next/head";
 import { CardsList, Character } from "../components";
 import { ICharacters } from "../interfaces/characters";
 import graphqlClient from "../lib/graphql";
-import { GET_HOME_CARDS } from "../request";
+import { GET_HOME_CARDS } from "../graphql";
 
 interface IHome {
   data?: ICharacters;

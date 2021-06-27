@@ -5,7 +5,7 @@ import { Details, Location, Pagination, Residents } from "../../../components";
 import { QuerieVariables } from "../../../interfaces";
 import { ILocation } from "../../../interfaces/Location";
 import graphqlClient from "../../../lib/graphql";
-import { GET_LOCATION_BY_ID } from "../../../request";
+import { GET_LOCATION_BY_ID } from "../../../graphql";
 
 interface ILocationPage {
   data?: ILocation;

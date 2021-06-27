@@ -1,12 +1,12 @@
 import { GetStaticPropsResult } from "next";
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import { useDebouncedCallback } from "use-debounce/lib";
+import { useDebouncedCallback } from "use-debounce";
 
 import { Search } from "../components";
 import { ICharacters } from "../interfaces/characters";
 import graphqlClient from "../lib/graphql";
-import { GET_HOME_CARDS } from "../request";
+import { GET_HOME_CARDS } from "../graphql";
 
 interface ISearchPage {
   data?: ICharacters;

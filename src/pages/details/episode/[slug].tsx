@@ -5,7 +5,7 @@ import { Details, Episode, Pagination, Residents } from "../../../components";
 import { QuerieVariables } from "../../../interfaces";
 import { IEpisode } from "../../../interfaces/episode";
 import graphqlClient from "../../../lib/graphql";
-import { GET_EPISODE_BY_ID } from "../../../request";
+import { GET_EPISODE_BY_ID } from "../../../graphql";
 
 interface IEpisodePage {
   data?: IEpisode;
