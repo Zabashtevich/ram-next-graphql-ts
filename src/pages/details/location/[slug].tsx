@@ -3,12 +3,12 @@ import { useState } from "react";
 
 import { Details, Location, Pagination, Residents } from "../../../components";
 import { QuerieVariables } from "../../../interfaces";
-import { ILocation } from "../../../interfaces/location";
+import { ILocationWithResidents } from "../../../interfaces/location";
 import graphqlClient from "../../../lib/graphql";
 import { GET_LOCATION_BY_ID } from "../../../graphql";
 
 interface ILocationPage {
-  data?: ILocation;
+  data?: ILocationWithResidents;
   error?: boolean;
 }
 
@@ -44,14 +44,15 @@ interface ContextWithQuery extends NextPageContext {
 export async function getServerSideProps({
   query,
 }: ContextWithQuery): Promise<GetServerSidePropsResult<ILocationPage>> {
-  const { data, error } = await graphqlClient.query<ILocation, QuerieVariables>(
-    {
-      query: GET_LOCATION_BY_ID,
-      variables: {
-        id: query.slug,
-      },
+  const { data, error } = await graphqlClient.query<
+    ILocationWithResidents,
+    QuerieVariables
+  >({
+    query: GET_LOCATION_BY_ID,
+    variables: {
+      id: query.slug,
     },
-  );
+  });
 
   if (error) {
     return {

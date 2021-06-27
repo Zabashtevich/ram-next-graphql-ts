@@ -21,7 +21,7 @@ const Target = {
   }`,
   episodes: `query GetEpisodesByName($name: String!) {
     episodes(filter: {name: $name}) {
-      result {
+      results {
         id
         name
         air_date

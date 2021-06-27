@@ -1,11 +1,15 @@
+import { IEpisode } from "./../episode/index";
+import { ILocation } from "./../location/index";
+import { ICharacters } from "./../characters/index";
+
 export interface ApiVariables {
   name: string;
 }
 
-export interface ApiRequest<T, K, M> {
+export interface ApiRequest {
   data?:
-    | { characters: { results: T[] } }
-    | { locations: { results: K[] } }
-    | { episodes: { results: M[] } };
+    | ICharacters
+    | { locations: { results: ILocation[] } }
+    | { episodes: { results: IEpisode[] } };
   error?: boolean;
 }

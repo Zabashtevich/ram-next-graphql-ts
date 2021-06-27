@@ -4,6 +4,8 @@ export const CHARACTERS_FRAGMENT = `
       status
       species
       image
+      name
+      id
       origin {
         id
         name
@@ -12,8 +14,6 @@ export const CHARACTERS_FRAGMENT = `
         name
         id
       }
-      name
-      id
     }
   }
 `;

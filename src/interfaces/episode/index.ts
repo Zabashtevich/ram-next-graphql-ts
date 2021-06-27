@@ -1,9 +1,10 @@
 export interface IEpisode {
-  episode: {
-    id: string;
-    name: string;
-    air_date: string;
-    episode: string;
-    characters: { id: string; name: string; image: string }[];
-  };
+  id: string;
+  name: string;
+  air_date: string;
+  episode: string;
+}
+
+export interface IEpisodeWithCharacters extends IEpisode {
+  characters: { id: string; name: string; image: string }[];
 }

@@ -1,8 +1,10 @@
 export interface ILocation {
-  location: {
-    name: string;
-    type: string;
-    dimension: string;
-    residents: { name: string; id: string; image: string }[];
-  };
+  id: string;
+  name: string;
+  type: string;
+  dimension: string;
+}
+
+export interface ILocationWithResidents extends ILocation {
+  residents: { name: string; id: string; image: string }[];
 }

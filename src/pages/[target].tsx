@@ -33,7 +33,7 @@ export default function SearchPage({ items, error }: ISearchPage) {
     async function searchItems() {
       fetch(`/api/search?target=${query.target}`, { method: "POST" })
         .then((data) => data.json())
-        .then((items) => items);
+        .then((items) => console.log(items));
     }
     searchItems();
   }, [value, query.target]);
@@ -66,7 +66,7 @@ export async function getServerSideProps(): Promise<
   } else {
     return {
       props: {
-        data,
+        items: data,
       },
     };
   }

@@ -1,8 +1,8 @@
-import { IEpisode } from "../../interfaces/episode";
+import { IEpisodeWithCharacters } from "../../interfaces/episode";
 import { Card, Header, Title, Row, Subtitle, Value } from "./styles/episode";
 
 interface EpisodeProps {
-  episode: IEpisode;
+  episode: IEpisodeWithCharacters;
 }
 
 export default function Episode({ episode }: EpisodeProps) {

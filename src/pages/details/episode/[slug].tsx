@@ -3,12 +3,12 @@ import { useState } from "react";
 
 import { Details, Episode, Pagination, Residents } from "../../../components";
 import { QuerieVariables } from "../../../interfaces";
-import { IEpisode } from "../../../interfaces/episode";
+import { IEpisodeWithCharacters } from "../../../interfaces/episode";
 import graphqlClient from "../../../lib/graphql";
 import { GET_EPISODE_BY_ID } from "../../../graphql";
 
 interface IEpisodePage {
-  data?: IEpisode;
+  data?: { episode: IEpisodeWithCharacters };
   error?: boolean;
 }
 
@@ -44,7 +44,10 @@ interface ContextWithQuery extends NextPageContext {
 export async function getServerSideProps({
   query,
 }: ContextWithQuery): Promise<GetServerSidePropsResult<IEpisodePage>> {
-  const { error, data } = await graphqlClient.query<IEpisode, QuerieVariables>({
+  const { error, data } = await graphqlClient.query<
+    IEpisodeWithCharacters,
+    QuerieVariables
+  >({
     query: GET_EPISODE_BY_ID,
     variables: {
       id: query.slug,

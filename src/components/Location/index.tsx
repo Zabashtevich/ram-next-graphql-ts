@@ -1,8 +1,10 @@
-import { ILocation } from "../../interfaces/location";
+import { ILocationWithResidents } from "../../interfaces/location";
 import { Card, Header, Title, Row, Subtitle, Value } from "./styles/location";
 
 interface LocationProps {
-  item: ILocation;
+  item: {
+    location: ILocationWithResidents;
+  };
 }
 
 export default function Location({ item }: LocationProps) {
