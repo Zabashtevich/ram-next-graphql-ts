@@ -1,9 +1,9 @@
-import { CHARACTERS_FRAGMENT } from "./../../graphql/request";
 import { gql } from "@apollo/client";
+import { charactersListFragment } from "../fragments";
 
 const Target = {
   characters: `
-  ${CHARACTERS_FRAGMENT}
+  ${charactersListFragment}
   query GetCharactersByName($name: String!) {
     characters(filter: { name: $name }) {
       ...Character

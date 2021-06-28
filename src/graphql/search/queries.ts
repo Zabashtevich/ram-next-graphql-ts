@@ -10,7 +10,6 @@ export const cardsQueries = {
     query GetCharactersPage($page: Int!) {
       characters(page: $page) {
         info {
-          count
           pages
         }
         ...CharactersList

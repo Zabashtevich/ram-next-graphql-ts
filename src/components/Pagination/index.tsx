@@ -4,13 +4,15 @@ import { getPaginationOffset, range } from "../../utils";
 interface IPagination {
   activePage: number;
   amount: number;
-  setActivePage: (item: number) => void;
+  setActivePage?: (item: number) => void;
+  onItemClick?: (item: number) => void;
 }
 
 export default function Pagination({
   activePage,
   amount,
   setActivePage,
+  onItemClick,
 }: IPagination) {
   return (
     <Container>
@@ -20,7 +22,14 @@ export default function Pagination({
           <Item
             key={item}
             selected={item === activePage ? 1 : 0}
-            onClick={() => setActivePage(item)}
+            onClick={() => {
+              if (onItemClick) {
+                onItemClick(item);
+              }
+              if (setActivePage) {
+                setActivePage(item);
+              }
+            }}
           >
             {item}
           </Item>

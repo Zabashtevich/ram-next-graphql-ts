@@ -31,16 +31,17 @@ export default function useSearch(target: string): UseSearchProps {
     let mounted = true;
     if (searchValue && mounted) {
       setSettings((prev) => ({ ...prev, loading: true }));
-      fetch(`/api/search?target=${target}`, { method: "POST" })
-        .then((data) => data.json())
-        .then((items: IResponse) => {
-          setSearchValue("");
-          setSettings({ loading: false, response: items, searchError: false });
-        })
-        .catch(() => {
-          setSearchValue("");
-          setSettings({ loading: false, response: null, searchError: true });
-        });
+      fetch(`/api/search`);
+      // .then((data) => data.json())
+      // .then((items: IResponse) => {
+      //   setSearchValue("");
+      //   setSettings({ loading: false, response: items, searchError: false });
+      // })
+      // .catch((error) => {
+      //   console.log(error);
+      //   setSearchValue("");
+      //   setSettings({ loading: false, response: null, searchError: true });
+      // });
     }
 
     return () => {

@@ -18,23 +18,17 @@ export default async function handler(
   req: RequestInterface,
   res: NextApiResponse<IProps>,
 ) {
-  const search = req.body;
+  GET_ITEMS_BY_NAME("characters");
+  // try {
+  //   const { data } = await graphqlClient.query({
+  //     query: GET_ITEMS_BY_NAME("characters"),
+  //     variables: { name: "rick" },
+  //   });
 
-  try {
-    const { data } = await graphqlClient.query<IApiResponse, ApiVariables>({
-      query: GET_ITEMS_BY_NAME(req.query.target),
-      variables: { name: search },
-    });
-
-    res
-      .status(200)
-      .json({
-        results:
-          data?.characters?.results ||
-          data?.episodes?.results ||
-          data?.locations?.results,
-      });
-  } catch (error) {
-    res.status(400).json({ error: true });
-  }
+  //   res.status(200).json({
+  //     results: 123,
+  //   });
+  // } catch (error) {
+  //   res.status(400).json({ error: true });
+  // }
 }
