@@ -1,17 +1,10 @@
 import { useEffect, useState } from "react";
-
-import { ILocation } from "../../interfaces/location/index";
-import { IEpisode } from "../../interfaces/episode/index";
-import { ICharacterItem } from "../../interfaces/characters/index";
+import { SearchPageResponse } from "../../interfaces/pages/SearchPage";
 
 interface IUseSearch {
   loading: boolean;
   searchError: boolean;
-  response: null | IResponse;
-}
-
-interface IResponse {
-  results: ICharacterItem[] | IEpisode[] | ILocation[];
+  response: null | SearchPageResponse;
 }
 
 interface UseSearchProps extends IUseSearch {
@@ -36,9 +29,13 @@ export default function useSearch(target: string): UseSearchProps {
         body: searchValue,
       })
         .then((data) => data.json())
-        .then((items: IResponse) => {
+        .then((items: { data: SearchPageResponse }) => {
           setSearchValue("");
-          setSettings({ loading: false, response: items, searchError: false });
+          setSettings({
+            loading: false,
+            response: items.data,
+            searchError: false,
+          });
         })
         .catch(() => {
           setSearchValue("");

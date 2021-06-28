@@ -1,27 +1,25 @@
-import { ILocationWithResidents } from "../../interfaces/location";
 import { Card, Header, Title, Row, Subtitle, Value } from "./styles/location";
+import { ILocation } from "../../interfaces/location/index";
 
 interface LocationProps {
-  item: {
-    location: ILocationWithResidents;
-  };
+  item: ILocation;
 }
 
 export default function Location({ item }: LocationProps) {
   return (
     <Card>
       <Header>
-        <Title>{item.location.name}</Title>
+        <Title>{item.name}</Title>
       </Header>
 
       <Row>
         <Subtitle>Type:</Subtitle>
-        <Value>{item.location.type || "unknown"}</Value>
+        <Value>{item.type || "unknown"}</Value>
       </Row>
 
       <Row>
         <Subtitle>Deminsion:</Subtitle>
-        <Value>{item.location.dimension || "unknown"}</Value>
+        <Value>{item.dimension || "unknown"}</Value>
       </Row>
     </Card>
   );

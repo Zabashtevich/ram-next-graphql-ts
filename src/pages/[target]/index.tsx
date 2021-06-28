@@ -3,19 +3,25 @@ import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { NextRouter, useRouter } from "next/router";
 
-import { CardsList, Pagination, Search } from "../../components";
+import {
+  CardsList,
+  Episode,
+  Pagination,
+  Search,
+  Location,
+  Character,
+} from "../../components";
 import graphqlClient from "../../lib/graphql";
 import { useSearch } from "../../hooks";
 import { useEffect } from "react";
 import getQuerySearch from "../../graphql/search/index";
-import getInitialCards from "../../utils/search-page/getInitialCards";
 import {
-  SearchPageCards,
   SearchPageContext,
   SearchPageProps,
   SearchPageResponse,
 } from "../../interfaces/pages/SearchPage";
 import { useRef } from "react";
+import getPagesAmount from "../../utils/search-page/getPagesAmount";
 
 export default function SearchPage({
   data,
@@ -23,9 +29,9 @@ export default function SearchPage({
   error,
 }: SearchPageProps) {
   const [searchActive, setSearchActive] = useState(false);
-  const [cards, setCards] = useState<SearchPageCards | null>(null);
+  const [cards, setCards] = useState<SearchPageResponse>();
 
-  const initialCards = useRef<SearchPageCards>();
+  const initialCards = useRef<SearchPageResponse>();
 
   const { query, push }: NextRouter = useRouter();
 
@@ -53,10 +59,12 @@ export default function SearchPage({
 
   useEffect(() => {
     if (data) {
-      initialCards.current = getInitialCards(data, query.target as string);
+      initialCards.current = data;
       setCards(initialCards.current);
     }
-  }, [data]);
+  }, [data, query.target]);
+
+  console.log(cards);
 
   return (
     <>
@@ -67,14 +75,23 @@ export default function SearchPage({
         resetSearch={resetSearch}
       />
 
-      {query.target === "characters" && (
-        <CardsList items={cards} renderItem={(item) => <div></div>} />
+      {cards && "characters" in cards && (
+        <CardsList
+          items={cards.characters.results}
+          renderItem={(item) => <Character item={item} />}
+        />
       )}
-      {query.target === "episodes" && (
-        <CardsList items={[]} renderItem={(item) => <div></div>} />
+      {cards && "locations" in cards && (
+        <CardsList
+          items={cards.locations.results}
+          renderItem={(item) => <Location item={item} />}
+        />
       )}
-      {query.target === "locations" && (
-        <CardsList items={[{}]} renderItem={(item) => <div></div>} />
+      {cards && "episodes" in cards && (
+        <CardsList
+          items={cards.episodes.results}
+          renderItem={(item) => <Episode episode={item} />}
+        />
       )}
       {!error && (
         <Pagination
@@ -112,10 +129,7 @@ export async function getServerSideProps({
     return {
       props: {
         data,
-        pagesAmount:
-          (data.characters?.info.pages as string) ||
-          (data.episodes?.info.pages as string) ||
-          (data.locations?.info.pages as string),
+        pagesAmount: getPagesAmount(data),
       },
     };
   }

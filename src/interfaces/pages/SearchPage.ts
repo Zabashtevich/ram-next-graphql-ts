@@ -21,10 +21,6 @@ export type SearchPageResponse =
   | LocationsResponse
   | EpisodesResponse;
 
-export type SearchPageCards = {
-  results: ILocation[] | IEpisode[] | ICharacterItem[];
-};
-
 interface CharactersResponse {
   characters: {
     info: {

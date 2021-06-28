@@ -1,6 +1,4 @@
-import { IEpisode } from "./../episode/index";
-import { ILocation } from "./../location/index";
-import { ICharacterItem } from "../characters/index";
+import { SearchPageResponse } from "../pages/SearchPage";
 
 export interface ApiVariables {
   name: string;
@@ -8,11 +6,5 @@ export interface ApiVariables {
 
 export interface IProps {
   error?: boolean;
-  results?: IEpisode[] | ICharacterItem[] | ILocation[];
+  data?: SearchPageResponse;
 }
-
-export type IApiResponse = {
-  episodes?: { results: IEpisode[] };
-  characters?: { results: ICharacterItem[] };
-  locations?: { results: ILocation[] };
-};
