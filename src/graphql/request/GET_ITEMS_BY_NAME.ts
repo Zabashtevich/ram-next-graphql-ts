@@ -6,7 +6,7 @@ const Target = {
   ${charactersListFragment}
   query GetCharactersByName($name: String!) {
     characters(filter: { name: $name }) {
-      ...Character
+      ...CharactersList
   }
 }`,
   locations: `query GetLocationByName($name: String!) {

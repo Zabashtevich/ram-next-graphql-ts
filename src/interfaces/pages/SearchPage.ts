@@ -16,20 +16,26 @@ export interface SearchPageContext extends NextPageContext {
   };
 }
 
-export interface SearchPageResponse {
-  characters?: {
+export type SearchPageResponse =
+  | CharactersResponse
+  | LocationsResponse
+  | EpisodesResponse;
+
+export type SearchPageCards = {
+  results: ILocation[] | IEpisode[] | ICharacterItem[];
+};
+
+interface CharactersResponse {
+  characters: {
     info: {
       pages: string;
     };
     results: ICharacterItem[];
   };
-  episodes?: {
-    info: {
-      pages: string;
-    };
-    results: IEpisode[];
-  };
-  locations?: {
+}
+
+interface LocationsResponse {
+  locations: {
     info: {
       pages: string;
     };
@@ -37,4 +43,11 @@ export interface SearchPageResponse {
   };
 }
 
-export type SearchPageCards = ILocation[] | IEpisode[] | ICharacterItem[];
+interface EpisodesResponse {
+  episodes: {
+    info: {
+      pages: string;
+    };
+    results: IEpisode[];
+  };
+}

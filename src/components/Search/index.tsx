@@ -12,12 +12,14 @@ interface ISearch {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   setSearchActive: (a: boolean) => void;
   searchActive: boolean;
+  resetSearch: () => void;
 }
 
 export default function Search({
   onChange,
   searchActive,
   setSearchActive,
+  resetSearch,
 }: ISearch) {
   return (
     <Section>
@@ -34,6 +36,7 @@ export default function Search({
             onClick={(e) => {
               e.stopPropagation();
               setSearchActive(false);
+              resetSearch();
             }}
           />
         </Wrapper>

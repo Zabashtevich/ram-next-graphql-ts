@@ -5,8 +5,9 @@ import {
 
 export default function getInitialCards(
   response: SearchPageResponse,
+  target: string,
 ): SearchPageCards {
-  return (response.characters?.results ||
-    response.locations?.results ||
-    response.episodes?.results) as [];
+  return {
+    results: response.characters?.results,
+  };
 }

@@ -23,7 +23,7 @@ export default function SearchPage({
   error,
 }: SearchPageProps) {
   const [searchActive, setSearchActive] = useState(false);
-  const [cards, setCards] = useState<SearchPageCards>([]);
+  const [cards, setCards] = useState<SearchPageCards | null>(null);
 
   const initialCards = useRef<SearchPageCards>();
 
@@ -41,16 +41,19 @@ export default function SearchPage({
     debounced(e.target.value);
   }
 
+  function resetSearch() {
+    setCards(initialCards.current!);
+  }
+
   useEffect(() => {
     if (response) {
-      console.log(response);
-      setCards(response.results);
+      setCards(response);
     }
   }, [response]);
 
   useEffect(() => {
     if (data) {
-      initialCards.current = getInitialCards(data as {});
+      initialCards.current = getInitialCards(data, query.target as string);
       setCards(initialCards.current);
     }
   }, [data]);
@@ -61,13 +64,14 @@ export default function SearchPage({
         onChange={searchHandler}
         searchActive={searchActive}
         setSearchActive={setSearchActive}
+        resetSearch={resetSearch}
       />
 
       {query.target === "characters" && (
-        <CardsList items={[{}]} renderItem={(item) => <div></div>} />
+        <CardsList items={cards} renderItem={(item) => <div></div>} />
       )}
       {query.target === "episodes" && (
-        <CardsList items={[{}]} renderItem={(item) => <div></div>} />
+        <CardsList items={[]} renderItem={(item) => <div></div>} />
       )}
       {query.target === "locations" && (
         <CardsList items={[{}]} renderItem={(item) => <div></div>} />
