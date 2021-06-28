@@ -4,14 +4,21 @@ import { useDebouncedCallback } from "use-debounce";
 import { NextRouter, useRouter } from "next/router";
 
 import { CardsList, Search } from "../../components";
-import { ICharacters } from "../../interfaces/characters";
 import graphqlClient from "../../lib/graphql";
 import { GET_HOME_CARDS } from "../../graphql";
 import { useSearch } from "../../hooks";
+import { useEffect } from "react";
+import { ICharacterItem, ICharacters } from "../../interfaces/characters/index";
+import { IEpisode } from "../../interfaces/episode/index";
+import { ILocation } from "../../interfaces/location/index";
 
 interface ISearchPage {
-  items?: ICharacters;
+  items?: { results: ICharacterItem[] };
   error?: boolean;
+}
+
+interface ICards {
+  results: ICharacterItem[] | IEpisode[] | ICharacterItem[] | ILocation[];
 }
 
 export default function SearchPage({ items, error }: ISearchPage) {
@@ -32,6 +39,12 @@ export default function SearchPage({ items, error }: ISearchPage) {
   function searchHandler(e: React.ChangeEvent<HTMLInputElement>) {
     debounced(e.target.value);
   }
+
+  useEffect(() => {
+    if (response) {
+      console.log(response.results);
+    }
+  }, [response]);
 
   return (
     <>
@@ -70,7 +83,7 @@ export async function getServerSideProps(): Promise<
   } else {
     return {
       props: {
-        items: data,
+        items: data.characters,
       },
     };
   }

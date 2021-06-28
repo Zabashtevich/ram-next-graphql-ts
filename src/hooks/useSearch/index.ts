@@ -7,9 +7,11 @@ import { ICharacterItem } from "../../interfaces/characters/index";
 interface IUseSearch {
   loading: boolean;
   searchError: boolean;
-  response: null | {
-    results: ICharacterItem[] | IEpisode[] | ILocation[];
-  };
+  response: null | IResponse;
+}
+
+interface IResponse {
+  results: ICharacterItem[] | IEpisode[] | ILocation[];
 }
 
 interface UseSearchProps extends IUseSearch {
@@ -31,7 +33,7 @@ export default function useSearch(target: string): UseSearchProps {
       setSettings((prev) => ({ ...prev, loading: true }));
       fetch(`/api/search?target=${target}`, { method: "POST" })
         .then((data) => data.json())
-        .then((items) => {
+        .then((items: IResponse) => {
           setSearchValue("");
           setSettings({ loading: false, response: items, searchError: false });
         })

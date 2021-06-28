@@ -28,7 +28,12 @@ export default async function handler(
 
     res
       .status(200)
-      .json({ results: data?.characters || data?.episodes || data?.locations });
+      .json({
+        results:
+          data?.characters?.results ||
+          data?.episodes?.results ||
+          data?.locations?.results,
+      });
   } catch (error) {
     res.status(400).json({ error: true });
   }

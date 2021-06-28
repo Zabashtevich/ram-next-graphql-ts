@@ -8,7 +8,7 @@ export interface ApiVariables {
 
 export interface IProps {
   error?: boolean;
-  results?: { results: IEpisode[] | ICharacterItem[] | ILocation[] };
+  results?: IEpisode[] | ICharacterItem[] | ILocation[];
 }
 
 export type IApiResponse = {
