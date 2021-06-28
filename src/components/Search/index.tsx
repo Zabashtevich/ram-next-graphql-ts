@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Section,
   Container,
@@ -9,9 +8,17 @@ import {
   CloseIcon,
 } from "./styles/search";
 
-export default function Search({ onChange }: any) {
-  const [searchActive, setSearchActive] = useState<boolean>(false);
+interface ISearch {
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setSearchActive: (a: boolean) => void;
+  searchActive: boolean;
+}
 
+export default function Search({
+  onChange,
+  searchActive,
+  setSearchActive,
+}: ISearch) {
   return (
     <Section>
       <Container>
@@ -20,7 +27,7 @@ export default function Search({ onChange }: any) {
           onClick={() => setSearchActive(true)}
           searchActive={searchActive}
         >
-          <Input type="search" placeholder="Search..." />
+          <Input type="search" placeholder="Search..." onChange={onChange} />
           <SearchIcon visible={!searchActive ? 1 : 0} />
           <CloseIcon
             visible={searchActive ? 1 : 0}
