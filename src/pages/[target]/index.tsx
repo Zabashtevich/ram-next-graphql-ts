@@ -1,29 +1,27 @@
-import { GetStaticPropsResult } from "next";
+import { GetStaticPropsResult, NextPageContext } from "next";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { NextRouter, useRouter } from "next/router";
 
-import { CardsList, Search } from "../../components";
+import { CardsList, Pagination, Search } from "../../components";
 import graphqlClient from "../../lib/graphql";
-import { GET_HOME_CARDS } from "../../graphql";
 import { useSearch } from "../../hooks";
 import { useEffect } from "react";
 import { ICharacterItem, ICharacters } from "../../interfaces/characters/index";
 import { IEpisode } from "../../interfaces/episode/index";
 import { ILocation } from "../../interfaces/location/index";
+import getQuerySearch from "../../graphql/search/index";
 
 interface ISearchPage {
-  items?: { results: ICharacterItem[] };
+  items?: ICharacterItem[];
   error?: boolean;
 }
 
-interface ICards {
-  results: ICharacterItem[] | IEpisode[] | ICharacterItem[] | ILocation[];
-}
+type ICards = ICharacterItem[] | IEpisode[] | ICharacterItem[] | ILocation[];
 
 export default function SearchPage({ items, error }: ISearchPage) {
   const [searchActive, setSearchActive] = useState(false);
-  const [cards, setCards] = useState(items);
+  const [cards, setCards] = useState<ICards>([]);
   const initialState = items;
 
   const { query }: NextRouter = useRouter();
@@ -42,10 +40,16 @@ export default function SearchPage({ items, error }: ISearchPage) {
 
   useEffect(() => {
     if (response) {
-      console.log(response.results);
+      setCards(response.results);
     }
   }, [response]);
 
+  useEffect(() => {
+    if (items) {
+      setCards(items);
+    }
+  }, [items]);
+  console.log(items);
   return (
     <>
       <Search
@@ -63,15 +67,23 @@ export default function SearchPage({ items, error }: ISearchPage) {
       {query.target === "locations" && (
         <CardsList items={[{}]} renderItem={(item) => <div></div>} />
       )}
+      <Pagination activePage={1} amount={100} setActivePage={(a) => a} />
     </>
   );
 }
+interface ContextWithQuery extends NextPageContext {
+  query: {
+    target: string;
+    page: string;
+  };
+}
 
-export async function getServerSideProps(): Promise<
-  GetStaticPropsResult<ISearchPage>
-> {
+export async function getServerSideProps({
+  query,
+}: ContextWithQuery): Promise<GetStaticPropsResult<ISearchPage>> {
   const { error, data } = await graphqlClient.query<ICharacters>({
-    query: GET_HOME_CARDS,
+    query: getQuerySearch(query.target),
+    variables: { page: 1 },
   });
 
   if (error) {
@@ -83,7 +95,7 @@ export async function getServerSideProps(): Promise<
   } else {
     return {
       props: {
-        items: data.characters,
+        items: data.characters.results,
       },
     };
   }
