@@ -25,7 +25,10 @@ export default async function handler(
       query: GET_ITEMS_BY_NAME(req.query.target),
       variables: { name: search },
     });
-    res.status(200).json({ results: data });
+
+    res
+      .status(200)
+      .json({ results: data?.characters || data?.episodes || data?.locations });
   } catch (error) {
     res.status(400).json({ error: true });
   }
