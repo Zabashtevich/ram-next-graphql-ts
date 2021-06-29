@@ -24,6 +24,14 @@ export const Inner = styled.button`
   border: none;
   right: -4%;
   top: -10%;
+
+  @media (max-width: 1000px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 800px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const Close = styled(BsXCircle)`
@@ -52,6 +60,21 @@ export const Container = styled.div`
   display: flex;
   height: 500px;
   width: 900px;
+
+  @media (max-width: 1000px) {
+    height: 400px;
+    width: 720px;
+  }
+
+  @media (max-width: 800px) {
+    height: 400px;
+    width: 500px;
+  }
+
+  @media (max-width: 550px) {
+    height: 400px;
+    width: 300px;
+  }
 `;
 
 export const Header = styled.header`
@@ -69,6 +92,10 @@ export const Thumbnail = styled(BsXCircle)`
   color: white;
   left: 50%;
   top: 50%;
+
+  @media (max-width: 1000px) {
+    font-size: 5rem;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -93,6 +120,16 @@ export const Title = styled.span`
   margin-top: 2rem;
   font-size: 3rem;
   display: block;
+
+  @media (max-width: 1000px) {
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+
+  @media (max-width: 550px) {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
 `;
 
 export const Subtitle = styled.span`
@@ -100,6 +137,11 @@ export const Subtitle = styled.span`
   margin-top: 0.5rem;
   font-size: 1.5rem;
   display: block;
+
+  @media (max-width: 550px) {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
 `;
 
 export const Button = styled.button`
@@ -117,5 +159,14 @@ export const Button = styled.button`
     background-color: white;
     transition: 300ms;
     cursor: pointer;
+  }
+
+  @media (max-width: 1000px) {
+    padding: 0.3rem 1.5rem;
+  }
+
+  @media (max-width: 1000px) {
+    margin-bottom: 0.5rem;
+    padding: 0 1rem;
   }
 `;
