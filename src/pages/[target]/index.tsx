@@ -61,7 +61,6 @@ export default function SearchPage({
       setCards(initialCards.current);
     }
   }, [data, query.target]);
-
   return (
     <>
       <Search
@@ -69,6 +68,7 @@ export default function SearchPage({
         searchActive={searchActive}
         setSearchActive={setSearchActive}
         resetSearch={resetSearch}
+        loading={loading}
       />
 
       {cards && "characters" in cards && (
@@ -91,7 +91,7 @@ export default function SearchPage({
       )}
       {!error && (
         <Pagination
-          activePage={Number(query.page)}
+          activePage={Number(query.page || 1)}
           amount={Number(pagesAmount)}
           onItemClick={(item: number) =>
             push({

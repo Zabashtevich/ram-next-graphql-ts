@@ -100,6 +100,7 @@ export const Wrapper = styled.div<WProps>`
   border-radius: 25px;
   border: 4px solid white;
   padding: 5px;
+  margin-bottom: 2rem;
 
   ${({ searchActive }) =>
     searchActive &&
@@ -119,5 +120,13 @@ export const Wrapper = styled.div<WProps>`
       ${CloseIcon} {
         background: ${({ theme }) => theme.colors.listBackground};
         color: white;
+      }
     `};
+`;
+
+export const Spinner = styled.img`
+  transform: translateX(-50%);
+  position: absolute;
+  top: 120%;
+  left: 50%;
 `;

@@ -7,6 +7,11 @@ interface IUseSearch {
   response: null | SearchPageResponse;
 }
 
+interface IResponse {
+  data?: SearchPageResponse;
+  error?: boolean;
+}
+
 interface UseSearchProps extends IUseSearch {
   setSearchValue: (value: string) => void;
 }
@@ -29,13 +34,25 @@ export default function useSearch(target: string): UseSearchProps {
         body: searchValue,
       })
         .then((data) => data.json())
-        .then((items: { data: SearchPageResponse }) => {
-          setSearchValue("");
-          setSettings({
-            loading: false,
-            response: items.data,
-            searchError: false,
-          });
+        .then((items: IResponse) => {
+          const { data, error } = items;
+
+          if (data) {
+            setSearchValue("");
+            setSettings({
+              loading: false,
+              response: items.data!,
+              searchError: false,
+            });
+          }
+          if (error) {
+            setSearchValue("");
+            setSettings({
+              loading: false,
+              response: null,
+              searchError: true,
+            });
+          }
         })
         .catch(() => {
           setSearchValue("");

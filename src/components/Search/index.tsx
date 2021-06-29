@@ -6,6 +6,7 @@ import {
   Input,
   SearchIcon,
   CloseIcon,
+  Spinner,
 } from "./styles/search";
 
 interface ISearch {
@@ -13,6 +14,7 @@ interface ISearch {
   setSearchActive: (a: boolean) => void;
   searchActive: boolean;
   resetSearch: () => void;
+  loading: boolean;
 }
 
 export default function Search({
@@ -20,6 +22,7 @@ export default function Search({
   searchActive,
   setSearchActive,
   resetSearch,
+  loading,
 }: ISearch) {
   return (
     <Section>
@@ -31,6 +34,7 @@ export default function Search({
         >
           <Input type="search" placeholder="Search..." onChange={onChange} />
           <SearchIcon visible={!searchActive ? 1 : 0} />
+          {loading && <Spinner src={"/spinner.svg"} />}
           <CloseIcon
             visible={searchActive ? 1 : 0}
             onClick={(e) => {
