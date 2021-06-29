@@ -1,6 +1,6 @@
 import { IEpisode } from "./../episode/index";
 import { ILocation } from "./../location/index";
-import { ICharacterItem } from "../characters/index";
+import { ICharacter } from "../character/index";
 import { NextPageContext } from "next";
 
 export interface SearchPageProps {
@@ -26,7 +26,7 @@ interface CharactersResponse {
     info: {
       pages: string;
     };
-    results: ICharacterItem[];
+    results: ICharacter[];
   };
 }
 

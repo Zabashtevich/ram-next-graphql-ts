@@ -2,12 +2,12 @@ import { gql } from "@apollo/client";
 import { charactersListFragment } from "../fragments";
 
 const GET_HOME_CARDS = gql`
+  ${charactersListFragment}
   query GetHomeCards {
     characters {
-      ...Character
+      ...CharactersList
     }
   }
-  ${charactersListFragment}
 `;
 
 export default GET_HOME_CARDS;

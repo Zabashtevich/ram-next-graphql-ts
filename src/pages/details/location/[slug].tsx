@@ -18,7 +18,7 @@ export default function LocationPage({ data, error }: IProps) {
   return (
     data && (
       <Details>
-        <Location item={data} />
+        <Location item={data.location} />
         <Residents
           residents={data.location.residents.slice(
             activePage * 10 - 10,

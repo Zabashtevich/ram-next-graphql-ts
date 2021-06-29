@@ -1,5 +1,5 @@
 import { GetServerSidePropsResult } from "next";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { NextRouter, useRouter } from "next/router";
 
@@ -13,15 +13,13 @@ import {
 } from "../../components";
 import graphqlClient from "../../lib/graphql";
 import { useSearch } from "../../hooks";
-import { useEffect } from "react";
 import getQuerySearch from "../../graphql/search/index";
 import {
   SearchPageContext,
   SearchPageProps,
   SearchPageResponse,
 } from "../../interfaces/pages/SearchPage";
-import { useRef } from "react";
-import getPagesAmount from "../../utils/search-page/getPagesAmount";
+import { getPagesAmount } from "../../utils";
 
 export default function SearchPage({
   data,
@@ -63,8 +61,6 @@ export default function SearchPage({
       setCards(initialCards.current);
     }
   }, [data, query.target]);
-
-  console.log(cards);
 
   return (
     <>

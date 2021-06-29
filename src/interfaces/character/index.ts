@@ -1,4 +1,4 @@
-export interface ICharacterItem {
+export interface ICharacter {
   status: string;
   species: string;
   image: string;
@@ -14,8 +14,8 @@ export interface ICharacterItem {
   };
 }
 
-export interface ICharacters {
+export interface ICharactersList {
   characters: {
-    results: ICharacterItem[];
+    results: ICharacter[];
   };
 }

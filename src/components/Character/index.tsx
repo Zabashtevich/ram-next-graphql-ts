@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ICharacterItem } from "../../interfaces/characters";
+import { ICharacter } from "../../interfaces/character";
 
 import { stringContains } from "../../utils";
 import {
@@ -16,7 +16,7 @@ import {
 } from "./styles/character";
 
 interface CharacterProps {
-  item: ICharacterItem;
+  item: ICharacter;
 }
 
 interface ILiveStatus {
