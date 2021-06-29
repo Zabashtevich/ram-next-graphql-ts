@@ -32,7 +32,7 @@ export default function Modal() {
 
   if (isBrowser) {
     return (
-      true &&
+      visible &&
       ReactDOM.createPortal(
         <Section>
           <Overlay />

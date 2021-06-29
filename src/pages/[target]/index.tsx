@@ -20,6 +20,7 @@ import {
   SearchPageResponse,
 } from "../../interfaces/pages/SearchPage";
 import { getPagesAmount } from "../../utils";
+import { useModalContext } from "../../context";
 
 export default function SearchPage({
   data,
@@ -30,6 +31,8 @@ export default function SearchPage({
   const [catchedError, setCatchedError] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
   const [cards, setCards] = useState<SearchPageResponse | null>(null);
+
+  const { setVisible } = useModalContext();
 
   const initialCards = useRef<SearchPageResponse>();
 
@@ -79,6 +82,12 @@ export default function SearchPage({
       setCards(null);
     }
   }, [searchError]);
+
+  useEffect(() => {
+    if (error) {
+      setVisible(true);
+    }
+  }, [error, setVisible]);
 
   return (
     <>

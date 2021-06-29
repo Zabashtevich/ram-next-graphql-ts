@@ -1,9 +1,10 @@
 import { GetServerSidePropsResult, NextPageContext } from "next";
 import { Character, Details } from "../../../components";
-import { QuerieVariables } from "../../../interfaces";
 import { ICharacter } from "../../../interfaces/character";
 import graphqlClient from "../../../lib/graphql";
 import { GET_CHARACTER_BY_ID } from "../../../graphql";
+import { useEffect } from "react";
+import { useModalContext } from "../../../context";
 
 export interface IProps {
   data?: {
@@ -13,6 +14,14 @@ export interface IProps {
 }
 
 export default function CharacterPage({ data, error }: IProps) {
+  const { setVisible } = useModalContext();
+
+  useEffect(() => {
+    if (error) {
+      setVisible(true);
+    }
+  }, [error, setVisible]);
+
   return (
     data && (
       <Details>
@@ -31,10 +40,7 @@ interface ContextWithQuery extends NextPageContext {
 export async function getServerSideProps({
   query,
 }: ContextWithQuery): Promise<GetServerSidePropsResult<IProps>> {
-  const { data, error } = await graphqlClient.query<
-    { character: ICharacter },
-    QuerieVariables
-  >({
+  const { data, error } = await graphqlClient.query<{ character: ICharacter }>({
     query: GET_CHARACTER_BY_ID,
     variables: {
       id: query.slug,

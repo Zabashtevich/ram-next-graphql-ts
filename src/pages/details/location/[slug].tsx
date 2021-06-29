@@ -1,11 +1,11 @@
 import { GetServerSidePropsResult, NextPageContext } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Details, Location, Pagination, Residents } from "../../../components";
-import { QuerieVariables } from "../../../interfaces";
 import { ILocationWithResidents } from "../../../interfaces/location";
 import graphqlClient from "../../../lib/graphql";
 import { GET_LOCATION_BY_ID } from "../../../graphql";
+import { useModalContext } from "../../../context";
 
 interface IProps {
   data?: { location: ILocationWithResidents };
@@ -14,6 +14,14 @@ interface IProps {
 
 export default function LocationPage({ data, error }: IProps) {
   const [activePage, setActivePage] = useState(1);
+
+  const { setVisible } = useModalContext();
+
+  useEffect(() => {
+    if (error) {
+      setVisible(true);
+    }
+  }, [error, setVisible]);
 
   return (
     data && (
@@ -48,7 +56,7 @@ interface IRequest {
 export async function getServerSideProps({
   query,
 }: ContextWithQuery): Promise<GetServerSidePropsResult<IProps>> {
-  const { data, error } = await graphqlClient.query<IRequest, QuerieVariables>({
+  const { data, error } = await graphqlClient.query<IRequest>({
     query: GET_LOCATION_BY_ID,
     variables: {
       id: query.slug,

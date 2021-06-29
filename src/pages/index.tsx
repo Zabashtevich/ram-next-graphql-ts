@@ -1,10 +1,12 @@
 import { GetStaticPropsResult } from "next";
 import Head from "next/head";
+import { useEffect } from "react";
 
 import { CardsList, Character } from "../components";
 import { ICharactersList } from "../interfaces/character";
 import graphqlClient from "../lib/graphql";
 import { GET_HOME_CARDS } from "../graphql";
+import { useModalContext } from "../context";
 
 interface IHome {
   data?: ICharactersList;
@@ -12,6 +14,14 @@ interface IHome {
 }
 
 export default function Home({ data, error }: IHome) {
+  const { setVisible } = useModalContext();
+
+  useEffect(() => {
+    if (error) {
+      setVisible(true);
+    }
+  }, [error, setVisible]);
+
   return (
     <>
       <Head>

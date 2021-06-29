@@ -1,10 +1,11 @@
 import { GetServerSidePropsResult, NextPageContext } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Details, Episode, Pagination, Residents } from "../../../components";
 import { IEpisodeWithCharacters } from "../../../interfaces/episode";
 import graphqlClient from "../../../lib/graphql";
 import { GET_EPISODE_BY_ID } from "../../../graphql";
+import { useModalContext } from "../../../context";
 
 interface IProps {
   data?: { episode: IEpisodeWithCharacters };
@@ -13,6 +14,14 @@ interface IProps {
 
 export default function EpisodePage({ data, error }: IProps) {
   const [activePage, setActivePage] = useState(1);
+
+  const { setVisible } = useModalContext();
+
+  useEffect(() => {
+    if (error) {
+      setVisible(true);
+    }
+  }, [error, setVisible]);
 
   return (
     data && (
