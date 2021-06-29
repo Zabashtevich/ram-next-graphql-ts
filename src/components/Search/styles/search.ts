@@ -12,8 +12,13 @@ export const Container = styled.div`
 
 export const Title = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.searchTitle};
+  text-align: center;
   font-weight: 600;
   color: whitesmoke;
+
+  @media (max-width: 650px) {
+    font-size: 2rem;
+  }
 `;
 
 type IconProps = {
@@ -128,6 +133,10 @@ export const Wrapper = styled.div<WProps>`
         background: ${({ theme }) => theme.colors.listBackground};
         color: white;
       }
+
+      @media (max-width: 650px) {
+        width: 280px;
+      }
     `};
 `;
 
@@ -140,10 +149,15 @@ export const Spinner = styled.img`
 
 export const Placeholder = styled.span`
   transform: translateX(-50%);
+  text-align: center;
   position: absolute;
   color: whitesmoke;
   font-weight: 500;
   font-size: 2rem;
   top: 150%;
   left: 50%;
+
+  @media (max-width: 650px) {
+    font-size: 1.5rem;
+  }
 `;

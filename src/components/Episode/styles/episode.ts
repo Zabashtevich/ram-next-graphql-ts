@@ -8,6 +8,7 @@ export const Card = styled.article`
   align-items: center;
   overflow: hidden;
   padding: 0 2rem;
+  margin: 0.4rem;
   height: 220px;
   display: flex;
   width: 600px;
