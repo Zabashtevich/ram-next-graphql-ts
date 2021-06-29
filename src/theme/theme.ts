@@ -21,6 +21,11 @@ const theme: DefaultTheme = {
       footerBackground: "rgb(32, 35, 41)",
       main: "rgb(158, 158, 158)",
     },
+
+    modal: {
+      error: "#e3747e",
+      text: "#5c6577",
+    },
   },
   fontSize: {
     navLinks: "1.2rem",

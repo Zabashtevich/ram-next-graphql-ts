@@ -8,3 +8,4 @@ export { default as Location } from "./Location";
 export { default as Residents } from "./Residents";
 export { default as Pagination } from "./Pagination";
 export { default as Episode } from "./Episode";
+export { default as Modal } from "./Modal";

@@ -24,6 +24,11 @@ declare module "styled-components" {
         footerBackground: string;
         main: string;
       };
+
+      modal: {
+        error: string;
+        text: string;
+      };
     };
     fontSize: {
       navLinks: string;

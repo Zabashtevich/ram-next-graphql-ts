@@ -8,6 +8,7 @@ import AppLayout from "../layout";
 import { theme } from "../theme/theme";
 import graphqlClient from "../lib/graphql";
 import ModalContextProvider from "../context/modal/context";
+import { Modal } from "../components";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const client = graphqlClient;
@@ -18,6 +19,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <GlobalStyles />
         <AppLayout>
           <ModalContextProvider>
+            <Modal />
+
             <Component {...pageProps} />
           </ModalContextProvider>
         </AppLayout>
