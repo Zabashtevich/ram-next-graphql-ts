@@ -7,6 +7,7 @@ import { GlobalStyles } from "../theme/global-styles";
 import AppLayout from "../layout";
 import { theme } from "../theme/theme";
 import graphqlClient from "../lib/graphql";
+import ModalContextProvider from "../context/modal/context";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const client = graphqlClient;
@@ -16,7 +17,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <AppLayout>
-          <Component {...pageProps} />
+          <ModalContextProvider>
+            <Component {...pageProps} />
+          </ModalContextProvider>
         </AppLayout>
       </ThemeProvider>
     </ApolloProvider>

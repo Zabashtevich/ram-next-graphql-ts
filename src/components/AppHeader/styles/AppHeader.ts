@@ -7,15 +7,21 @@ export const Header = styled.header`
 
 export const Navigation = styled.nav`
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 2rem;
   display: flex;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
 `;
 
 export const List = styled.ul`
   font-size: ${({ theme }) => theme.fontSize.navLinks};
-  display: flex;
-
   list-style: none;
+  display: flex;
+  padding: 0;
 `;
 
 interface ItemProps {
@@ -44,6 +50,11 @@ export const Item = styled.li<ItemProps>`
       color: ${({ theme }) => theme.colors.secondary};
       transition: 300ms;
     }
+  }
+
+  @media (max-width: 550px) {
+    font-size: 1rem;
+    margin: 0 0.4rem;
   }
 `;
 
