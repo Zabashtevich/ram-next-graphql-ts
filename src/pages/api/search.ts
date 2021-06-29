@@ -22,10 +22,13 @@ export default async function handler(
       query: GET_ITEMS_BY_NAME(req.query.target),
       variables: { name: search },
     });
+    console.log(data);
+
     res.status(200).json({
       data,
     });
   } catch (catchedError) {
+    console.log(catchedError);
     res.status(500).json({ error: true });
   }
 }

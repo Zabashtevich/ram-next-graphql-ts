@@ -1,5 +1,6 @@
 import { NextRouter, useRouter } from "next/router";
 import React from "react";
+import stringContains from "../../utils/stringContains";
 
 import {
   Header,
@@ -25,13 +26,13 @@ export default function AppHeader() {
           </a>
         </LogoLink>
         <List>
-          <Item linkActive={asPath === "/characters"}>
+          <Item linkActive={stringContains(asPath, /characters/i)}>
             <NavLink href="/characters">Characters</NavLink>
           </Item>
-          <Item linkActive={asPath === "/locations"}>
+          <Item linkActive={stringContains(asPath, /locations/i)}>
             <NavLink href="/locations">Locations</NavLink>
           </Item>
-          <Item linkActive={asPath === "/episodes"}>
+          <Item linkActive={stringContains(asPath, /episodes/i)}>
             <NavLink href="/episodes">Episodes</NavLink>
           </Item>
         </List>

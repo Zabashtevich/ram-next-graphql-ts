@@ -84,6 +84,13 @@ export const Input = styled.input`
   border-radius: 20px;
   padding: 0 20px;
   color: black;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
 `;
 
 type WProps = {
@@ -100,7 +107,7 @@ export const Wrapper = styled.div<WProps>`
   border-radius: 25px;
   border: 4px solid white;
   padding: 5px;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 
   ${({ searchActive }) =>
     searchActive &&
@@ -128,5 +135,15 @@ export const Spinner = styled.img`
   transform: translateX(-50%);
   position: absolute;
   top: 120%;
+  left: 50%;
+`;
+
+export const Placeholder = styled.span`
+  transform: translateX(-50%);
+  position: absolute;
+  color: whitesmoke;
+  font-weight: 500;
+  font-size: 2rem;
+  top: 150%;
   left: 50%;
 `;

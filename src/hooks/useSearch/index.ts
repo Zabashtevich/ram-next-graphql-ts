@@ -13,17 +13,22 @@ interface IResponse {
 }
 
 interface UseSearchProps extends IUseSearch {
-  setSearchValue: (value: string) => void;
+  setSearchTarget: (value: string) => void;
+  refreshErrorState: () => void;
 }
 
 export default function useSearch(target: string): UseSearchProps {
+  const [searchValue, setSearchTarget] = useState("");
   const [{ loading, response, searchError }, setSettings] =
     useState<IUseSearch>({
       loading: false,
       response: null,
       searchError: false,
     });
-  const [searchValue, setSearchValue] = useState("");
+
+  function refreshErrorState() {
+    setSettings((prev) => ({ ...prev, searchError: false }));
+  }
 
   useEffect(() => {
     let mounted = true;
@@ -38,7 +43,7 @@ export default function useSearch(target: string): UseSearchProps {
           const { data, error } = items;
 
           if (data) {
-            setSearchValue("");
+            setSearchTarget("");
             setSettings({
               loading: false,
               response: items.data!,
@@ -46,7 +51,7 @@ export default function useSearch(target: string): UseSearchProps {
             });
           }
           if (error) {
-            setSearchValue("");
+            setSearchTarget("");
             setSettings({
               loading: false,
               response: null,
@@ -55,7 +60,7 @@ export default function useSearch(target: string): UseSearchProps {
           }
         })
         .catch(() => {
-          setSearchValue("");
+          setSearchTarget("");
           setSettings({ loading: false, response: null, searchError: true });
         });
     }
@@ -65,5 +70,5 @@ export default function useSearch(target: string): UseSearchProps {
     };
   }, [searchValue, target]);
 
-  return { loading, response, searchError, setSearchValue };
+  return { loading, response, searchError, setSearchTarget, refreshErrorState };
 }

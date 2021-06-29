@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Section,
   Container,
@@ -7,40 +8,47 @@ import {
   SearchIcon,
   CloseIcon,
   Spinner,
+  Placeholder,
 } from "./styles/search";
 
 interface ISearch {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  setSearchActive: (a: boolean) => void;
+  activateSearch: () => void;
+  disableSearch: () => void;
   searchActive: boolean;
-  resetSearch: () => void;
   loading: boolean;
+  notFound: boolean;
+  searchValue: string;
 }
 
 export default function Search({
   onChange,
   searchActive,
-  setSearchActive,
-  resetSearch,
+  activateSearch,
+  disableSearch,
   loading,
+  notFound,
+  searchValue,
 }: ISearch) {
   return (
     <Section>
       <Container>
         <Title>Search character or places:</Title>
-        <Wrapper
-          onClick={() => setSearchActive(true)}
-          searchActive={searchActive}
-        >
-          <Input type="search" placeholder="Search..." onChange={onChange} />
+        <Wrapper onClick={activateSearch} searchActive={searchActive}>
+          <Input
+            type="search"
+            placeholder="Search..."
+            onChange={onChange}
+            value={searchValue}
+          />
           <SearchIcon visible={!searchActive ? 1 : 0} />
           {loading && <Spinner src={"/spinner.svg"} />}
+          {notFound && <Placeholder>Not found</Placeholder>}
           <CloseIcon
             visible={searchActive ? 1 : 0}
             onClick={(e) => {
               e.stopPropagation();
-              setSearchActive(false);
-              resetSearch();
+              disableSearch();
             }}
           />
         </Wrapper>

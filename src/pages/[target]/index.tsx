@@ -26,26 +26,37 @@ export default function SearchPage({
   pagesAmount,
   error,
 }: SearchPageProps) {
+  const [searchValue, setSearchValue] = useState("");
+  const [catchedError, setCatchedError] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
-  const [cards, setCards] = useState<SearchPageResponse>();
+  const [cards, setCards] = useState<SearchPageResponse | null>(null);
 
   const initialCards = useRef<SearchPageResponse>();
 
   const { query, push }: NextRouter = useRouter();
 
-  const { loading, response, searchError, setSearchValue } = useSearch(
-    query.target as string,
-  );
+  const { loading, response, searchError, setSearchTarget, refreshErrorState } =
+    useSearch(query.target as string);
 
   const debounced = useDebouncedCallback((value) => {
-    setSearchValue(value);
+    setCatchedError(false);
+    setSearchTarget(value);
   }, 1000);
 
   function searchHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchValue(e.target.value);
     debounced(e.target.value);
   }
 
-  function resetSearch() {
+  function activateSearch() {
+    setSearchActive(true);
+  }
+
+  function disableSearch() {
+    setSearchValue("");
+    setSearchActive(false);
+    refreshErrorState();
+    setCatchedError(false);
     setCards(initialCards.current!);
   }
 
@@ -61,35 +72,47 @@ export default function SearchPage({
       setCards(initialCards.current);
     }
   }, [data, query.target]);
+
+  useEffect(() => {
+    if (searchError) {
+      setCatchedError(true);
+      setCards(null);
+    }
+  }, [searchError]);
+
   return (
     <>
       <Search
         onChange={searchHandler}
         searchActive={searchActive}
-        setSearchActive={setSearchActive}
-        resetSearch={resetSearch}
+        activateSearch={activateSearch}
+        disableSearch={disableSearch}
+        searchValue={searchValue}
+        notFound={catchedError}
         loading={loading}
       />
 
       {cards && "characters" in cards && (
         <CardsList
           items={cards.characters.results}
-          renderItem={(item) => <Character item={item} />}
+          renderItem={(item) => (
+            <Character item={item} key={`${item.name + item.origin.name}`} />
+          )}
         />
       )}
       {cards && "locations" in cards && (
         <CardsList
           items={cards.locations.results}
-          renderItem={(item) => <Location item={item} />}
+          renderItem={(item) => <Location item={item} key={item.name} />}
         />
       )}
       {cards && "episodes" in cards && (
         <CardsList
           items={cards.episodes.results}
-          renderItem={(item) => <Episode episode={item} />}
+          renderItem={(item) => <Episode episode={item} key={item.name} />}
         />
       )}
-      {!error && (
+      {!catchedError && !searchActive && (
         <Pagination
           activePage={Number(query.page || 1)}
           amount={Number(pagesAmount)}
