@@ -6,7 +6,7 @@ import { AppHeader } from "../../src/components";
 import { mockUseRouter } from "../auxillary/useRouter";
 import { theme } from "../../src/theme/theme";
 
-describe("AppHeader", () => {
+describe("<AppHeader/>", () => {
   it("correctly renders navigation with links", () => {
     mockUseRouter({
       asPath: "/characters/1",

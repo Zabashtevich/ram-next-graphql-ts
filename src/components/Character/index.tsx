@@ -38,7 +38,7 @@ export default function Character({ item }: CharacterProps) {
       <Info>
         <Header>
           <Link href={`/details/character/${item.id}`} passHref>
-            <LinkWrapper>
+            <LinkWrapper data-testid="character-link">
               <Title>{item.name}</Title>
             </LinkWrapper>
           </Link>
@@ -52,7 +52,7 @@ export default function Character({ item }: CharacterProps) {
         <Row>
           <Subtitle>Last known location:</Subtitle>
           <Link href={`/details/location/${item.location.id}`} passHref>
-            <LinkWrapper>
+            <LinkWrapper data-testid="location-link">
               <Value>{item.location.name}</Value>
             </LinkWrapper>
           </Link>
@@ -61,7 +61,7 @@ export default function Character({ item }: CharacterProps) {
           <Subtitle>First seen in:</Subtitle>
           {item.origin.id && (
             <Link href={`/details/episode/${item.origin.id}`} passHref>
-              <LinkWrapper>
+              <LinkWrapper data-testid="episode-link">
                 <Value>{item.origin.name}</Value>
               </LinkWrapper>
             </Link>
