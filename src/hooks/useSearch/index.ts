@@ -12,7 +12,7 @@ interface IResponse {
   error?: boolean;
 }
 
-interface UseSearchProps extends IUseSearch {
+export interface UseSearchProps extends IUseSearch {
   setSearchTarget: (value: string) => void;
   refreshErrorState: () => void;
 }
