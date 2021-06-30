@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Section,
   Container,
@@ -34,17 +33,25 @@ export default function Search({
     <Section>
       <Container>
         <Title>Search character or places:</Title>
-        <Wrapper onClick={activateSearch} searchActive={searchActive}>
+        <Wrapper
+          onClick={activateSearch}
+          searchActive={searchActive}
+          data-testid="search-container"
+        >
           <Input
             type="search"
             placeholder="Search..."
             onChange={onChange}
             value={searchValue}
+            data-testid="search-input"
           />
           <SearchIcon visible={!searchActive ? 1 : 0} />
-          {loading && <Spinner src={"/spinner.svg"} />}
+          {loading && (
+            <Spinner src={"/spinner.svg"} data-testid="search-spinner" />
+          )}
           {notFound && <Placeholder>Not found</Placeholder>}
           <CloseIcon
+            data-testid="search-close-icon"
             visible={searchActive ? 1 : 0}
             onClick={(e) => {
               e.stopPropagation();
