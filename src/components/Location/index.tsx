@@ -19,7 +19,7 @@ export default function Location({ item }: LocationProps) {
   return (
     <Card>
       <Header>
-        <Link href={`/location/${item.id}`} passHref>
+        <Link href={`/details/location/${item.id}`} passHref>
           <LinkWrapper title={`to ${item.name} description`}>
             <Title>{item.name}</Title>
           </LinkWrapper>

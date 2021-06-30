@@ -1,6 +1,6 @@
 import { useState, createContext } from "react";
 
-interface IModalContext {
+export interface IModalContext {
   visible: boolean;
   setVisible: (arg: boolean) => void;
 }

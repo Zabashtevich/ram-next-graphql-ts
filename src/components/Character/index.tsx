@@ -54,7 +54,7 @@ export default function Character({ item }: CharacterProps) {
 
         <Row>
           <Subtitle>Last known location:</Subtitle>
-          <Link href={`/details/location/${item.location.id}`} passHref>
+          <Link href={`/detailsitem.location.id}`} passHref>
             <LinkWrapper
               data-testid="location-link"
               title={`to ${item.location.name} description`}

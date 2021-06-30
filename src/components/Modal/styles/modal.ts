@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { BsX, BsXCircle } from "react-icons/bs";
+import { BsXCircle } from "react-icons/bs";
 
 export const Section = styled.section`
   transform: translateX(-50%, -50%);
