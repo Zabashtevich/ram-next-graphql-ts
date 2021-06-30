@@ -18,7 +18,7 @@ export default function AppHeader() {
   return (
     <Header>
       <Navigation>
-        <LogoLink href="/">
+        <LogoLink href="/" passHref>
           <a title="main page">
             <Logo
               width="40"

@@ -104,7 +104,7 @@ export default function SearchPage({
   return (
     <>
       <Head>
-        <title>RAM Search</title>
+        <title>{`RAM Search ${query.target}`}</title>
         <meta name="description" content="Search page" />
       </Head>
       <Search
