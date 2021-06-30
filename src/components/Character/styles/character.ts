@@ -23,9 +23,12 @@ interface ThumbnailProps {
 export const Thumbnail = styled.img<ThumbnailProps>`
   object-position: center center;
   object-fit: cover;
+  height: 220px;
+  width: 220px;
 
   @media (max-width: 650px) {
     height: 300px;
+    width: auto;
   }
 `;
 
