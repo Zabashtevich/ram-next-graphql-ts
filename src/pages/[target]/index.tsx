@@ -21,6 +21,7 @@ import {
 } from "../../interfaces/pages/SearchPage";
 import { getPagesAmount } from "../../utils";
 import { useModalContext } from "../../context";
+import Head from "next/head";
 
 export default function SearchPage({
   data,
@@ -91,6 +92,10 @@ export default function SearchPage({
 
   return (
     <>
+      <Head>
+        <title>RAM Search</title>
+        <meta name="description" content="Search page" />
+      </Head>
       <Search
         onChange={searchHandler}
         searchActive={searchActive}

@@ -1,4 +1,14 @@
-import { Card, Header, Title, Row, Subtitle, Value } from "./styles/location";
+import Link from "next/link";
+
+import {
+  Card,
+  Header,
+  Title,
+  Row,
+  Subtitle,
+  Value,
+  LinkWrapper,
+} from "./styles/location";
 import { ILocation } from "../../interfaces/location/index";
 
 interface LocationProps {
@@ -9,7 +19,11 @@ export default function Location({ item }: LocationProps) {
   return (
     <Card>
       <Header>
-        <Title>{item.name}</Title>
+        <Link href={`/location/${item.id}`} passHref>
+          <LinkWrapper title={`to ${item.name} description`}>
+            <Title>{item.name}</Title>
+          </LinkWrapper>
+        </Link>
       </Header>
 
       <Row>

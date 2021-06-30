@@ -19,7 +19,7 @@ export default function AppHeader() {
     <Header>
       <Navigation>
         <LogoLink href="/">
-          <a>
+          <a title="main page">
             <Logo
               width="40"
               height="40"
@@ -31,13 +31,22 @@ export default function AppHeader() {
           </a>
         </LogoLink>
         <List>
-          <Item linkActive={stringContains(asPath, /characters/i)}>
+          <Item
+            linkActive={stringContains(asPath, /characters/i)}
+            title="characters"
+          >
             <NavLink href="/characters">Characters</NavLink>
           </Item>
-          <Item linkActive={stringContains(asPath, /locations/i)}>
+          <Item
+            linkActive={stringContains(asPath, /locations/i)}
+            title="locations"
+          >
             <NavLink href="/locations">Locations</NavLink>
           </Item>
-          <Item linkActive={stringContains(asPath, /episodes/i)}>
+          <Item
+            linkActive={stringContains(asPath, /episodes/i)}
+            title="episodes"
+          >
             <NavLink href="/episodes">Episodes</NavLink>
           </Item>
         </List>

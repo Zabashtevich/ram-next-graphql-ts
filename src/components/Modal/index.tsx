@@ -18,18 +18,17 @@ import {
   Button,
 } from "./styles/modal";
 
-const modalRoot = document.createElement("div");
-modalRoot.setAttribute("id", "modal-root");
-document.body.appendChild(modalRoot);
-
 export default function Modal() {
   const [isBrowser, setIsBrowser] = useState(false);
   const { visible, setVisible } = useModalContext();
 
-  const el = document.createElement("div");
-
   useEffect(
     () => {
+      const modalRoot = document.createElement("div");
+      const el = document.createElement("div");
+
+      modalRoot.setAttribute("id", "modal-root");
+      document.body.appendChild(modalRoot);
       modalRoot.appendChild(el);
 
       setIsBrowser(true);

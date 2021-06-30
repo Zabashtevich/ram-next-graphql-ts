@@ -5,6 +5,7 @@ import graphqlClient from "../../../lib/graphql";
 import { GET_CHARACTER_BY_ID } from "../../../graphql";
 import { useEffect } from "react";
 import { useModalContext } from "../../../context";
+import Head from "next/head";
 
 export interface IProps {
   data?: {
@@ -23,11 +24,17 @@ export default function CharacterPage({ data, error }: IProps) {
   }, [error, setVisible]);
 
   return (
-    data && (
-      <Details>
-        <Character item={data.character} />
-      </Details>
-    )
+    <>
+      <Head>
+        <title>RAM Character</title>
+        <meta name="description" content="Character description page" />
+      </Head>
+      {data && (
+        <Details>
+          <Character item={data.character} />
+        </Details>
+      )}
+    </>
   );
 }
 

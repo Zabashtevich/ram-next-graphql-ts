@@ -6,6 +6,7 @@ import { IEpisodeWithCharacters } from "../../../interfaces/episode";
 import graphqlClient from "../../../lib/graphql";
 import { GET_EPISODE_BY_ID } from "../../../graphql";
 import { useModalContext } from "../../../context";
+import Head from "next/head";
 
 interface IProps {
   data?: { episode: IEpisodeWithCharacters };
@@ -24,22 +25,28 @@ export default function EpisodePage({ data, error }: IProps) {
   }, [error, setVisible]);
 
   return (
-    data && (
-      <Details>
-        <Episode episode={data.episode} />
-        <Residents
-          residents={data.episode.characters.slice(
-            activePage * 10 - 10,
-            activePage * 10,
-          )}
-        />
-        <Pagination
-          amount={Math.ceil(data.episode.characters.length / 10)}
-          activePage={activePage}
-          setActivePage={setActivePage}
-        />
-      </Details>
-    )
+    <>
+      <Head>
+        <title>RAM Episode</title>
+        <meta name="description" content="Episode description page" />
+      </Head>
+      {data && (
+        <Details>
+          <Episode episode={data.episode} />
+          <Residents
+            residents={data.episode.characters.slice(
+              activePage * 10 - 10,
+              activePage * 10,
+            )}
+          />
+          <Pagination
+            amount={Math.ceil(data.episode.characters.length / 10)}
+            activePage={activePage}
+            setActivePage={setActivePage}
+          />
+        </Details>
+      )}
+    </>
   );
 }
 

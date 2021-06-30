@@ -6,6 +6,7 @@ import { ILocationWithResidents } from "../../../interfaces/location";
 import graphqlClient from "../../../lib/graphql";
 import { GET_LOCATION_BY_ID } from "./../../../graphql";
 import { useModalContext } from "./../../../context";
+import Head from "next/head";
 
 interface IProps {
   data?: { location: ILocationWithResidents };
@@ -24,22 +25,28 @@ export default function LocationPage({ data, error }: IProps) {
   }, [error, setVisible]);
 
   return (
-    data && (
-      <Details>
-        <Location item={data.location} />
-        <Residents
-          residents={data.location.residents.slice(
-            activePage * 10 - 10,
-            activePage * 10,
-          )}
-        />
-        <Pagination
-          activePage={activePage}
-          setActivePage={setActivePage}
-          amount={Math.ceil(data.location.residents.length / 10)}
-        />
-      </Details>
-    )
+    <>
+      <Head>
+        <title>RAM Location</title>
+        <meta name="description" content="Location description page" />
+      </Head>
+      {data && (
+        <Details>
+          <Location item={data.location} />
+          <Residents
+            residents={data.location.residents.slice(
+              activePage * 10 - 10,
+              activePage * 10,
+            )}
+          />
+          <Pagination
+            activePage={activePage}
+            setActivePage={setActivePage}
+            amount={Math.ceil(data.location.residents.length / 10)}
+          />
+        </Details>
+      )}
+    </>
   );
 }
 

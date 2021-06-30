@@ -41,6 +41,15 @@ export const Subtitle = styled.span`
   font-weight: 500;
 `;
 
+export const LinkWrapper = styled.a`
+  text-decoration: none;
+
+  :hover {
+    color: ${({ theme }) => theme.colors.secondary};
+    transition: 300ms;
+  }
+`;
+
 export const Value = styled.span`
   font-size: ${({ theme }) => theme.fontSize.card.value};
   color: ${({ theme }) => theme.colors.card.main};

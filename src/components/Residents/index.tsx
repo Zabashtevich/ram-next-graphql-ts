@@ -20,9 +20,11 @@ export default function Residents({ residents }: ResidentsProps) {
       <List>
         {residents.map((item) => (
           <Card key={item.id}>
-            <Poster src={item.image} />
+            <Poster src={item.image} alt={`${item.name} poster`} />
             <Link href={`/details/character/${item.id}`} passHref>
-              <Subtitle>{item.name}</Subtitle>
+              <Subtitle title={`to ${item.name} description`}>
+                {item.name}
+              </Subtitle>
             </Link>
           </Card>
         ))}
