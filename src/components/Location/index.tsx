@@ -18,7 +18,7 @@ export default function Location({ item }: LocationProps) {
       </Row>
 
       <Row>
-        <Subtitle>Deminsion:</Subtitle>
+        <Subtitle>Dimension:</Subtitle>
         <Value>{item.dimension || "unknown"}</Value>
       </Row>
     </Card>
