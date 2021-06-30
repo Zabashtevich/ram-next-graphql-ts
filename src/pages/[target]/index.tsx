@@ -42,7 +42,7 @@ export default function SearchPage({
   const { loading, response, searchError, setSearchTarget, refreshErrorState } =
     useSearch(query.target as string);
 
-  const debounced = useDebouncedCallback((value) => {
+  const debounced = useDebouncedCallback((value: string) => {
     setCatchedError(false);
     setSearchTarget(value);
   }, 1000);
@@ -89,6 +89,17 @@ export default function SearchPage({
       setVisible(true);
     }
   }, [error, setVisible]);
+
+  useEffect(
+    () => {
+      setSearchValue("");
+      setSearchActive(false);
+      refreshErrorState();
+      setCatchedError(false);
+      setCards(initialCards.current!);
+    },
+    [query], // eslint-disable-line react-hooks/exhaustive-deps
+  );
 
   return (
     <>
