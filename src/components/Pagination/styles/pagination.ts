@@ -9,7 +9,7 @@ export const Container = styled.section`
 `;
 
 interface ItemProps {
-  selected: number;
+  selected?: boolean;
 }
 
 export const Item = styled.span<ItemProps>`

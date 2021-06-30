@@ -18,10 +18,10 @@ export default function Pagination({
     <Container>
       {range(1, amount)
         .slice(...getPaginationOffset(activePage, amount))
-        .map((item) => (
+        .map((item: number) => (
           <Item
             key={item}
-            selected={item === activePage ? 1 : 0}
+            selected={item === activePage}
             onClick={() => {
               if (onItemClick) {
                 onItemClick(item);
