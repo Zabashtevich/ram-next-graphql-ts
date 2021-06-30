@@ -7,7 +7,7 @@ import { GlobalStyles } from "../theme/global-styles";
 import AppLayout from "../layout";
 import { theme } from "../theme/theme";
 import graphqlClient from "../lib/graphql";
-import ModalContextProvider from "../context/modal/context";
+import ModalContextProvider from "./../context/modal/context";
 import { Modal } from "../components";
 
 function MyApp({ Component, pageProps }: AppProps) {

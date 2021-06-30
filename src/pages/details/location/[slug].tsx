@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { Details, Location, Pagination, Residents } from "../../../components";
 import { ILocationWithResidents } from "../../../interfaces/location";
 import graphqlClient from "../../../lib/graphql";
-import { GET_LOCATION_BY_ID } from "../../../graphql";
-import { useModalContext } from "../../../context";
+import { GET_LOCATION_BY_ID } from "./../../../graphql";
+import { useModalContext } from "./../../../context";
 
 interface IProps {
   data?: { location: ILocationWithResidents };

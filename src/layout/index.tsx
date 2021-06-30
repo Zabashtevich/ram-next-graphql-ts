@@ -22,7 +22,7 @@ export default function AppLayout({
         <Section>
           <Title>The Rick and Morty APP</Title>
           <Inner>
-            <Thumbnail src="./ram.svg" />
+            <Thumbnail src="./ram.svg" data-testid="main-thumbnail" />
           </Inner>
         </Section>
 

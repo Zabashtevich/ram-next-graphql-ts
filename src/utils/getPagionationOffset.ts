@@ -1,5 +1,3 @@
-import range from "./range";
-
 export default function getPaginationOffset(
   activePage: number,
   amount: number,
