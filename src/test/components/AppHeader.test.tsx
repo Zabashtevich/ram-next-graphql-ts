@@ -2,9 +2,9 @@ import { render } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import "@testing-library/jest-dom";
 
-import { AppHeader } from "../../src/components";
+import { AppHeader } from "../../components";
 import { mockUseRouter } from "../auxillary/useRouter";
-import { theme } from "../../src/theme/theme";
+import { theme } from "../../theme/theme";
 
 describe("<AppHeader/>", () => {
   it("correctly renders navigation with links", () => {

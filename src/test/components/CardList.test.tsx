@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import { CardsList } from "./../../src/components";
+import { CardsList } from "../../components";
 
 describe("<Cardlist/>", () => {
   test("getting and mapping array of items from props", () => {

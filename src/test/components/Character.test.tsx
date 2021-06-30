@@ -2,8 +2,8 @@ import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 
-import { Character } from "./../../src/components";
-import { theme } from "../../src/theme/theme";
+import { Character } from "../../components";
+import { theme } from "../../theme/theme";
 
 describe("<Character />", () => {
   test("correctly render received character item", () => {

@@ -41,7 +41,9 @@ export default function Footer() {
         </Link>
       </List>
       <Signature>
-        <Author href="/">by Zabashtevich 2021</Author>
+        <Author href="https://github.com/Zabashtevich">
+          by Zabashtevich 2021
+        </Author>
       </Signature>
     </Container>
   );
