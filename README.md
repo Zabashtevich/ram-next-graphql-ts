@@ -9,5 +9,4 @@ SSR приложение на базе RAM API, построенного по в
 5. Styled components
 
 Ссылка на деплой проекта:
-https://vercel.com/zabashtevich/ram-next-graphql-ts/EkpzYTy7BiGamcmASHxgjStjw19N
-
+https://ram-next-graphql-ts-dlul87g5f-zabashtevich.vercel.app/
